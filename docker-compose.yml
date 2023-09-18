@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+# Build project via Gradle and run it
+  api:
+    build: .
+    container_name: homebrew_dash_gradle
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    env_file: .env
+    environment:
+      - DB_HOST=homebrew_dash_postgres
+    networks:
+      - common_network
+
+# postgreSQL database service
+  database:
+    image: postgres:16-alpine
+    ports:
+      - '5432:5432'
+    restart: always
+    container_name: homebrew_dash_postgres
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    env_file: .env
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=homebrew_dash
+    networks:
+      - common_network
+
+# create volume for DB data
+volumes:
+  pg_data:
+
+# create common network containers will live in
+networks:
+  common_network:
+    driver: bridge
