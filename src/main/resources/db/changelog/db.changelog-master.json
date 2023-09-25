@@ -1,3 +1,10 @@
 {
-  "databaseChangeLog": []
+  "databaseChangeLog": [
+    {
+      "include": {
+        "file": "2023/09/22-01-changelog.json",
+        "relativeToChangelogFile": true
+      }
+    }
+  ]
 }
