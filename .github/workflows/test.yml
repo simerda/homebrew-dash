@@ -1,0 +1,26 @@
+name: Build and test
+
+# Run tests check on pull request or push to main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    name: Run jUnit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.0
+
+      - name: Create .env file
+        run: touch .env
+
+      - name: Build and run tests
+        run: docker build .
+
+        env:
+          DEFAULT_BRANCH: main
