@@ -4,6 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.validation.annotation.Validated;
 
 @Validated
@@ -35,7 +36,7 @@ public class UserRequestDto {
     private String surname;
 
     public String getEmail() {
-        return email.trim();
+        return StringUtils.trim(email);
     }
 
     public String getPassword() {
@@ -43,14 +44,14 @@ public class UserRequestDto {
     }
 
     public String getUsername() {
-        return username.trim();
+        return StringUtils.trim(username);
     }
 
     public String getFirstName() {
-        return firstName.trim();
+        return StringUtils.trim(firstName);
     }
 
     public String getSurname() {
-        return surname.trim();
+        return StringUtils.trim(surname);
     }
 }
