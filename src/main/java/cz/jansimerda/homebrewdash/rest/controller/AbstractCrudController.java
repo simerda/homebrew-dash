@@ -58,9 +58,10 @@ public abstract class AbstractCrudController<E extends DomainEntity<ID>, DRQ, DR
 
     @PutMapping("/{id}")
     public ResponseEntity<DRS> update(@Valid @RequestBody DRQ request, @PathVariable ID id) {
-        E entity;
+        E entity = dtoToEntityConverter.apply(request);
+        entity.setId(id);
         try {
-            entity = service.update(dtoToEntityConverter.apply(request));
+            entity = service.update(entity);
         } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
         }

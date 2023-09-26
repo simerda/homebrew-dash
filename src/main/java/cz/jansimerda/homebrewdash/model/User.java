@@ -32,7 +32,14 @@ public class User implements DomainEntity<UUID> {
     private boolean admin;
 
     /**
-     * @return User entity identifier (UUID)
+     * @inheritDoc
+     */
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    /**
+     * @inheritDoc
      */
     public UUID getId() {
         return Objects.requireNonNull(id);
@@ -83,5 +90,12 @@ public class User implements DomainEntity<UUID> {
      */
     public boolean isAdmin() {
         return this.admin;
+    }
+
+    /**
+     * @param admin give or withdraw admin authorization
+     */
+    public void setIsAdmin(boolean admin) {
+        this.admin = admin;
     }
 }
