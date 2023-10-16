@@ -5,6 +5,18 @@
         "file": "2023/09/22-01-changelog.json",
         "relativeToChangelogFile": true
       }
+    },
+    {
+      "include": {
+        "file": "2023/09/27-01-changelog.json",
+        "relativeToChangelogFile": true
+      }
+    },
+    {
+      "include": {
+        "file": "2023/09/28-01-changelog.json",
+        "relativeToChangelogFile": true
+      }
     }
   ]
 }

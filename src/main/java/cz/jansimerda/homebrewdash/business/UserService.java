@@ -20,15 +20,14 @@ public class UserService extends AbstractCrudService<User, UUID> {
 
     @Override
     public User create(User entity) {
+        Optional<User> existing = this.repository.getFirstByEmailOrUsername(entity.getEmail(), entity.getUsername());
 
-        Optional<User> existing = this.repository.findFirstByEmailOrUsername(
-                entity.getEmail(),
-                entity.getUsername().orElse(null)
-        );
         if (existing.isPresent() && entity.getEmail().equals(existing.get().getEmail())) {
             throw new ConditionsNotMetException(String.format("User with email %s already exists.", entity.getEmail()));
-        } else if (existing.isPresent()) {
-            throw new ConditionsNotMetException(String.format("User with username %s already exists.", entity.getUsername().orElseThrow()));
+        }
+
+        if (existing.isPresent()) {
+            throw new ConditionsNotMetException(String.format("User with username %s already exists.", entity.getUsername()));
         }
 
         return super.create(entity);

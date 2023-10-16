@@ -1,0 +1,98 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "1695809287350-1",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false,
+                      "primaryKey": true,
+                      "primaryKeyName": "pk_user_sessions"
+                    },
+                    "name": "id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "user_id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "token",
+                    "type": "VARCHAR(64)"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "expires_at",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "created_at",
+                    "type": "DATETIME"
+                  }
+                }
+              ],
+              "tableName": "user_sessions"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1695809287350-2",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addUniqueConstraint": {
+              "columnNames": "token",
+              "constraintName": "uc_user_sessions_token",
+              "tableName": "user_sessions"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1695809287350-3",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "user_id",
+              "baseTableName": "user_sessions",
+              "constraintName": "FK_USER_SESSIONS_ON_USER",
+              "referencedColumnNames": "id",
+              "referencedTableName": "users"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

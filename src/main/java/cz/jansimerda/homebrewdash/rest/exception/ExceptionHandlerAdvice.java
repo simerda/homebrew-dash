@@ -5,6 +5,9 @@ import cz.jansimerda.homebrewdash.exception.ExposedExceptionTypeEnum;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -34,6 +37,24 @@ public class ExceptionHandlerAdvice {
             error.addError(new Violation(fieldError.getField(), fieldError.getDefaultMessage()));
         }
         return error;
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public @ResponseBody ErrorResponse handleMethodArgumentNotValidException(BadCredentialsException e) {
+        return new ValidationErrorResponse(ExposedExceptionTypeEnum.USER_UNAUTHENTICATED, e.getMessage());
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public @ResponseBody ErrorResponse handleAccessDeniedException(AccessDeniedException e) {
+        return new ValidationErrorResponse(ExposedExceptionTypeEnum.USER_UNAUTHENTICATED, e.getMessage());
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public @ResponseBody ErrorResponse handleAuthenticationException(AccessDeniedException e) {
+        return new ValidationErrorResponse(ExposedExceptionTypeEnum.USER_UNAUTHENTICATED, e.getMessage());
     }
 
     @ExceptionHandler(ExposedException.class)

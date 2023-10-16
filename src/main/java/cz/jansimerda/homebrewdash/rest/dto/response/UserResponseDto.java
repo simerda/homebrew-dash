@@ -1,5 +1,6 @@
 package cz.jansimerda.homebrewdash.rest.dto.response;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class UserResponseDto {
@@ -8,6 +9,8 @@ public class UserResponseDto {
     private String username;
     private String firstName;
     private String surname;
+    private LocalDateTime updatedAt;
+    private LocalDateTime createdAt;
 
     public UUID getId() {
         return id;
@@ -47,5 +50,21 @@ public class UserResponseDto {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

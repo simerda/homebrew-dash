@@ -25,9 +25,9 @@ class UserRepositoryTest {
         userRepository.save(user2);
 
         // test
-        Assertions.assertTrue(userRepository.findFirstByEmailOrUsername("dummy@example.com", "uname").isPresent());
-        Assertions.assertTrue(userRepository.findFirstByEmailOrUsername("other@mail.com", null).isEmpty());
-        Assertions.assertTrue(userRepository.findFirstByEmailOrUsername("other@mail.com", "dummyUser").isPresent());
+        Assertions.assertTrue(userRepository.getFirstByEmailOrUsername("dummy@example.com", "uname").isPresent());
+        Assertions.assertTrue(userRepository.getFirstByEmailOrUsername("other@mail.com", null).isEmpty());
+        Assertions.assertTrue(userRepository.getFirstByEmailOrUsername("other@mail.com", "dummyUser").isPresent());
     }
 
     private User createUser() {

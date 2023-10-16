@@ -25,7 +25,7 @@ class UserServiceTest {
     @Test
     void create() {
         User user = createUser();
-        Mockito.when(userRepository.findFirstByEmailOrUsername(user.getEmail(), user.getUsername().orElse(null)))
+        Mockito.when(userRepository.getFirstByEmailOrUsername(user.getEmail(), user.getUsername()))
                 .thenReturn(Optional.empty());
         User mocked = createUser();
         mocked.setId(UUID.randomUUID());
@@ -35,19 +35,19 @@ class UserServiceTest {
         Assertions.assertNotNull(created);
         Assertions.assertInstanceOf(UUID.class, created.getId());
         Mockito.verify(userRepository, Mockito.times(1))
-                .findFirstByEmailOrUsername(user.getEmail(), user.getUsername().orElse(null));
+                .getFirstByEmailOrUsername(user.getEmail(), user.getUsername());
     }
 
     @Test
     void createFail() {
         User user = createUser();
-        Mockito.when(userRepository.findFirstByEmailOrUsername(user.getEmail(), user.getUsername().orElse(null)))
+        Mockito.when(userRepository.getFirstByEmailOrUsername(user.getEmail(), user.getUsername()))
                 .thenReturn(Optional.of(createUser()));
         Mockito.when(userRepository.save(user)).thenReturn(user);
 
         Assertions.assertThrowsExactly(ConditionsNotMetException.class, () -> userService.create(user));
         Mockito.verify(userRepository, Mockito.times(1))
-                .findFirstByEmailOrUsername(user.getEmail(), user.getUsername().orElse(null));
+                .getFirstByEmailOrUsername(user.getEmail(), user.getUsername());
     }
 
     private User createUser() {

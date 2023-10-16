@@ -5,6 +5,10 @@ public class EntityNotFoundException extends ExposedException {
         super("Entity not found");
     }
 
+    public EntityNotFoundException(String message) {
+        super(message);
+    }
+
     public <ID> EntityNotFoundException(ID id) {
         super("Entity with ID " + id + " was not found");
     }

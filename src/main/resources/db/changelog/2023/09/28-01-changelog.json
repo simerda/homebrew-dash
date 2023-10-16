@@ -1,0 +1,79 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "1695936668295-2",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addColumn": {
+              "columns": [
+                {
+                  "column": {
+                    "name": "created_at",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "updated_at",
+                    "type": "DATETIME"
+                  }
+                }
+              ],
+              "tableName": "users"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1695936668295-3",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addNotNullConstraint": {
+              "columnName": "created_at",
+              "tableName": "users"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1695936668295-5",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addNotNullConstraint": {
+              "columnName": "updated_at",
+              "tableName": "users"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1695936668295-1",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addNotNullConstraint": {
+              "columnDataType": "VARCHAR(30)",
+              "columnName": "username",
+              "tableName": "users",
+              "validate": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

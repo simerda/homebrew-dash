@@ -1,13 +1,18 @@
 package cz.jansimerda.homebrewdash.model;
 
 import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
 @Entity
 @Table(name = "users")
+@EntityListeners(AuditingEntityListener.class)
 public class User implements DomainEntity<UUID> {
     @Id
     @GeneratedValue
@@ -16,10 +21,10 @@ public class User implements DomainEntity<UUID> {
     @Column(length = 50, nullable = false, unique = true)
     private String email;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 100, nullable = false)
     private String password;
 
-    @Column(length = 30, unique = true)
+    @Column(length = 30, nullable = false, unique = true)
     private String username;
 
     @Column(length = 30)
@@ -31,18 +36,28 @@ public class User implements DomainEntity<UUID> {
     @Column(nullable = false)
     private boolean admin;
 
+    @Column(nullable = false)
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
+
+    @Column(nullable = false)
+    @CreatedDate
+    private LocalDateTime createdAt;
+
     /**
      * @inheritDoc
      */
-    public void setId(UUID id) {
-        this.id = id;
+    @Override
+    public UUID getId() {
+        return Objects.requireNonNull(id);
     }
 
     /**
      * @inheritDoc
      */
-    public UUID getId() {
-        return Objects.requireNonNull(id);
+    @Override
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -61,8 +76,8 @@ public class User implements DomainEntity<UUID> {
         this.password = Objects.requireNonNull(password);
     }
 
-    public Optional<String> getUsername() {
-        return Optional.ofNullable(username);
+    public String getUsername() {
+        return Objects.requireNonNull(username);
     }
 
     public void setUsername(String username) {
@@ -85,6 +100,7 @@ public class User implements DomainEntity<UUID> {
         this.surname = surname;
     }
 
+
     /**
      * @return whether user has admin authorization
      */
@@ -97,5 +113,19 @@ public class User implements DomainEntity<UUID> {
      */
     public void setIsAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    /**
+     * @return date and time of last update
+     */
+    public LocalDateTime getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    /**
+     * @return date and time of creation
+     */
+    public LocalDateTime getCreatedAt() {
+        return this.createdAt;
     }
 }

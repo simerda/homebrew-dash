@@ -45,12 +45,12 @@ class UserControllerTest {
         data.put("surname", "Doe");
 
         mockMvc.perform(
-                MockMvcRequestBuilders
-                        .post(getUri())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(data))
-        )
+                        MockMvcRequestBuilders
+                                .post(getUri())
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .content(objectMapper.writeValueAsString(data))
+                )
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("mail@example.com")))
@@ -116,7 +116,7 @@ class UserControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].email", Matchers.hasItem(user.getEmail())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[*].username", Matchers.hasItem(user.getUsername().orElse(null))))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[*].username", Matchers.hasItem(user.getUsername())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].password").doesNotExist())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].firstName", Matchers.hasItem(user.getFirstName().orElse(null))))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].surname", Matchers.hasItem(user.getSurname().orElse(null))));
@@ -131,7 +131,7 @@ class UserControllerTest {
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(user.getId().toString())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is(user.getEmail())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.username", Matchers.is(user.getUsername().orElse(null))))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.username", Matchers.is(user.getUsername())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.password").doesNotExist())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.firstName", Matchers.is(user.getFirstName().orElse(null))))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.surname", Matchers.is(user.getSurname().orElse(null))));

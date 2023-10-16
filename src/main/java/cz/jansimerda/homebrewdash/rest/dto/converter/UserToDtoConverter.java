@@ -15,9 +15,11 @@ public class UserToDtoConverter implements Function<User, UserResponseDto> {
 
         dto.setId(user.getId());
         dto.setEmail(user.getEmail());
-        user.getUsername().ifPresent(dto::setUsername);
+        dto.setUsername(user.getUsername());
         user.getFirstName().ifPresent(dto::setFirstName);
         user.getSurname().ifPresent(dto::setSurname);
+        dto.setUpdatedAt(user.getUpdatedAt());
+        dto.setCreatedAt(user.getCreatedAt());
 
         return dto;
     }
