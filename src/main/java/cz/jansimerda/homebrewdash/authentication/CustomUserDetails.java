@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 public class CustomUserDetails implements UserDetails {
 
@@ -18,11 +19,21 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if (user.isAdmin()) {
-            return List.of();
-        }
-
         return user.isAdmin() ? List.of(new SimpleGrantedAuthority(UserRoleEnum.ADMIN.toString())) : List.of();
+    }
+
+    /**
+     * @return logged User
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @return logged user's ID
+     */
+    public UUID getId() {
+        return user.getId();
     }
 
     @Override
@@ -53,5 +64,12 @@ public class CustomUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    /**
+     * @return true if user has ADMIN role
+     */
+    public boolean isAdmin() {
+        return user.isAdmin();
     }
 }

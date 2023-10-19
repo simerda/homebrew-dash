@@ -11,6 +11,6 @@ public enum UserRoleEnum {
 
     @Override
     public String toString() {
-        return textRole;
+        return "ROLE_" + textRole;
     }
 }

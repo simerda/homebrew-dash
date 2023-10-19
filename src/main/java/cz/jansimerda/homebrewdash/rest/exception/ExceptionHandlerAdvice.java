@@ -6,8 +6,6 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -39,22 +37,10 @@ public class ExceptionHandlerAdvice {
         return error;
     }
 
-    @ExceptionHandler(BadCredentialsException.class)
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public @ResponseBody ErrorResponse handleMethodArgumentNotValidException(BadCredentialsException e) {
-        return new ValidationErrorResponse(ExposedExceptionTypeEnum.USER_UNAUTHENTICATED, e.getMessage());
-    }
-
     @ExceptionHandler(AccessDeniedException.class)
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     public @ResponseBody ErrorResponse handleAccessDeniedException(AccessDeniedException e) {
-        return new ValidationErrorResponse(ExposedExceptionTypeEnum.USER_UNAUTHENTICATED, e.getMessage());
-    }
-
-    @ExceptionHandler(AuthenticationException.class)
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public @ResponseBody ErrorResponse handleAuthenticationException(AccessDeniedException e) {
-        return new ValidationErrorResponse(ExposedExceptionTypeEnum.USER_UNAUTHENTICATED, e.getMessage());
+        return new ErrorResponse(ExposedExceptionTypeEnum.ACCESS_DENIED, e.getMessage());
     }
 
     @ExceptionHandler(ExposedException.class)

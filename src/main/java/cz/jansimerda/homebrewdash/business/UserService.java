@@ -1,8 +1,10 @@
 package cz.jansimerda.homebrewdash.business;
 
+import cz.jansimerda.homebrewdash.authentication.CustomUserDetails;
 import cz.jansimerda.homebrewdash.exception.ConditionsNotMetException;
 import cz.jansimerda.homebrewdash.model.User;
 import cz.jansimerda.homebrewdash.repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -31,5 +33,19 @@ public class UserService extends AbstractCrudService<User, UUID> {
         }
 
         return super.create(entity);
+    }
+
+    /**
+     * Returns users accessible to logged-in user.
+     *
+     * @return All users for admins, otherwise logged-in user.
+     */
+    public Iterable<User> readAllAccessible() {
+        CustomUserDetails details = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (details.getUser().isAdmin()) {
+            return readAll();
+        }
+
+        return repository.findById(details.getId()).stream().toList();
     }
 }
