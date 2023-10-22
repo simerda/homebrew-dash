@@ -5,7 +5,6 @@ import java.util.UUID;
 
 public class UserSessionResponseDto {
     private UUID id;
-    private String token;
     private UserResponseDto user;
     private LocalDateTime expiresAt;
     private LocalDateTime createdAt;
@@ -16,14 +15,6 @@ public class UserSessionResponseDto {
 
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public UserResponseDto getUser() {

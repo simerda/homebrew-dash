@@ -23,7 +23,7 @@ import java.util.stream.StreamSupport;
 public abstract class AbstractCrudController<E extends DomainEntity<ID>, DRQ, DRS, ID> {
     protected Function<E, DRS> entityToDtoConverter;
     protected Function<DRQ, E> dtoToEntityConverter;
-    private AbstractCrudService<E, ID> service;
+    private final AbstractCrudService<E, ID> service;
 
     public AbstractCrudController(
             AbstractCrudService<E, ID> service,
