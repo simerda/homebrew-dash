@@ -13,7 +13,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "users")
 @EntityListeners(AuditingEntityListener.class)
-public class User implements DomainEntity<UUID> {
+public class User implements DomainEntity<UUID>, CreationAware {
     @Id
     @GeneratedValue
     private UUID id;
@@ -123,9 +123,25 @@ public class User implements DomainEntity<UUID> {
     }
 
     /**
+     * @param date date and time of last update
+     */
+    public void setUpdatedAt(LocalDateTime date) {
+        this.updatedAt = date;
+    }
+
+    /**
      * @return date and time of creation
      */
+    @Override
     public LocalDateTime getCreatedAt() {
         return this.createdAt;
+    }
+
+    /**
+     * @param date date and time of creation
+     */
+    @Override
+    public void setCreatedAt(LocalDateTime date) {
+        this.createdAt = date;
     }
 }

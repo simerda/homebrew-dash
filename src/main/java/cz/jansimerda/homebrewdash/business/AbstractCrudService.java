@@ -1,6 +1,7 @@
 package cz.jansimerda.homebrewdash.business;
 
 import cz.jansimerda.homebrewdash.exception.EntityNotFoundException;
+import cz.jansimerda.homebrewdash.model.CreationAware;
 import cz.jansimerda.homebrewdash.model.DomainEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
