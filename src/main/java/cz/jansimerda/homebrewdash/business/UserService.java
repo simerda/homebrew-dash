@@ -24,17 +24,22 @@ public class UserService extends AbstractCrudService<User, UUID> {
 
     @Override
     public User create(User entity) {
-        Optional<User> existing = this.repository.getFirstByEmailOrUsername(entity.getEmail(), entity.getUsername());
-
-        if (existing.isPresent() && entity.getEmail().equals(existing.get().getEmail())) {
-            throw new ConditionsNotMetException(String.format("User with email %s already exists.", entity.getEmail()));
-        }
-
-        if (existing.isPresent()) {
-            throw new ConditionsNotMetException(String.format("User with username %s already exists.", entity.getUsername()));
-        }
+        Optional<User> existing = repository.getFirstByEmailOrUsername(entity.getEmail(), entity.getUsername());
+        enforceConstraints(existing, entity);
 
         return super.create(entity);
+    }
+
+    @Override
+    public User update(User entity) throws EntityNotFoundException {
+        Optional<User> existing = repository.getFirstByEmailOrUsernameExceptId(
+                entity.getEmail(),
+                entity.getUsername(),
+                entity.getId()
+        );
+        enforceConstraints(existing, entity);
+
+        return super.update(entity);
     }
 
     /**
@@ -49,5 +54,28 @@ public class UserService extends AbstractCrudService<User, UUID> {
         }
 
         return repository.findById(details.getId()).stream().toList();
+    }
+
+    /**
+     * Examines possible User match based on username and email,
+     * compares it with candidate User and possibly throws appropriate exception
+     *
+     * @param match the user with same email or username as candidate, empty if no match
+     * @param candidate candidate user to be created/updated
+     */
+    private void enforceConstraints(Optional<User> match, User candidate) {
+        if(match.isEmpty()){
+            return;
+        }
+
+        if (candidate.getEmail().equals(match.get().getEmail())) {
+            throw new ConditionsNotMetException(
+                    String.format("User with email %s already exists.", candidate.getEmail())
+            );
+        }
+
+        throw new ConditionsNotMetException(
+                String.format("User with username %s already exists.", candidate.getUsername())
+        );
     }
 }

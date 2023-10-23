@@ -4,6 +4,7 @@ import cz.jansimerda.homebrewdash.business.UserService;
 import cz.jansimerda.homebrewdash.model.User;
 import cz.jansimerda.homebrewdash.rest.dto.request.UserRequestDto;
 import cz.jansimerda.homebrewdash.rest.dto.response.UserResponseDto;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +29,9 @@ public class UserController extends AbstractCrudController<User, UserRequestDto,
     }
 
     @Override
+    @PostMapping
     @PreAuthorize("!isAuthenticated() || principal.isAdmin()")
-    public ResponseEntity<UserResponseDto> create(UserRequestDto request) {
+    public ResponseEntity<UserResponseDto> create(@Valid @RequestBody UserRequestDto request) {
         return super.create(request);
     }
 
@@ -49,7 +51,7 @@ public class UserController extends AbstractCrudController<User, UserRequestDto,
     @Override
     @PutMapping("/{id}")
     @PreAuthorize("principal.id == #id || principal.isAdmin()")
-    public ResponseEntity<UserResponseDto> update(UserRequestDto request, @PathVariable UUID id) {
+    public ResponseEntity<UserResponseDto> update(@Valid @RequestBody UserRequestDto request, @PathVariable UUID id) {
         return super.update(request, id);
     }
 
