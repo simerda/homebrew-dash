@@ -15,7 +15,7 @@ class UserRepositoryTest {
     UserRepository userRepository;
 
     @Test
-    void findFirstByEmailOrUsername() {
+    void getFirstByEmailOrUsername() {
         // init
         User user = createUser();
 
@@ -29,7 +29,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    void findFirstByEmailOrUsernameExceptId() {
+    void getFirstByEmailOrUsernameExceptId() {
         // init
         User user = createUser();
 
@@ -47,7 +47,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    void findFirstByEmail() {
+    void getFirstByEmail() {
         // init
         User user = createUser();
 
@@ -59,7 +59,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    void findFirstByUsername() {
+    void getFirstByUsername() {
         // init
         User user = createUser();
 
