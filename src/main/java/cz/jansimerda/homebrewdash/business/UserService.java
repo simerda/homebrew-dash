@@ -2,11 +2,13 @@ package cz.jansimerda.homebrewdash.business;
 
 import cz.jansimerda.homebrewdash.authentication.CustomUserDetails;
 import cz.jansimerda.homebrewdash.exception.ConditionsNotMetException;
+import cz.jansimerda.homebrewdash.exception.EntityNotFoundException;
 import cz.jansimerda.homebrewdash.helpers.AuthenticationHelper;
 import cz.jansimerda.homebrewdash.model.User;
 import cz.jansimerda.homebrewdash.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -40,7 +42,7 @@ public class UserService extends AbstractCrudService<User, UUID> {
      *
      * @return All users for admins, otherwise logged-in user.
      */
-    public Iterable<User> readAllAccessible() {
+    public List<User> readAllAccessible() {
         CustomUserDetails details = AuthenticationHelper.getUserDetails();
         if (details.getUser().isAdmin()) {
             return readAll();

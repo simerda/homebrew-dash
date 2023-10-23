@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -101,7 +102,7 @@ public class UserSessionService {
      * @param withExpired returns also expired when true
      * @return list of UserSessions
      */
-    public Iterable<UserSession> readAll(boolean withExpired) {
+    public List<UserSession> readAll(boolean withExpired) {
         return sessionRepository.findAll(withExpired);
     }
 
@@ -110,7 +111,7 @@ public class UserSessionService {
      *
      * @return list of UserSessions
      */
-    public Iterable<UserSession> readAllAccessible() {
+    public List<UserSession> readAllAccessible() {
         CustomUserDetails details = AuthenticationHelper.getUserDetails();
         if (details.isAdmin()) {
             return readAll(true);

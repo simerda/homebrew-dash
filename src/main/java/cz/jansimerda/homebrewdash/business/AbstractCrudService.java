@@ -5,6 +5,7 @@ import cz.jansimerda.homebrewdash.model.CreationAware;
 import cz.jansimerda.homebrewdash.model.DomainEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -43,7 +44,7 @@ public abstract class AbstractCrudService<E extends DomainEntity<K>, K> {
         return repository.findById(id);
     }
 
-    public Iterable<E> readAll() {
+    public List<E> readAll() {
         return repository.findAll();
     }
 
