@@ -21,9 +21,9 @@ import java.util.stream.StreamSupport;
  * @param <ID>  Type of primary key of the entity
  */
 public abstract class AbstractCrudController<E extends DomainEntity<ID>, DRQ, DRS, ID> {
+    private final AbstractCrudService<E, ID> service;
     protected Function<E, DRS> entityToDtoConverter;
     protected Function<DRQ, E> dtoToEntityConverter;
-    private final AbstractCrudService<E, ID> service;
 
     public AbstractCrudController(
             AbstractCrudService<E, ID> service,

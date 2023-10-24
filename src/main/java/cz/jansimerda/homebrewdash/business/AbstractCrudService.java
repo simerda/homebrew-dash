@@ -59,7 +59,7 @@ public abstract class AbstractCrudService<E extends DomainEntity<K>, K> {
         E existing = repository.findById(entity.getId())
                 .orElseThrow(() -> new EntityNotFoundException(entity.getClass(), entity.getId()));
 
-        if(entity instanceof CreationAware){
+        if (entity instanceof CreationAware) {
             ((CreationAware) entity).setCreatedAt(((CreationAware) existing).getCreatedAt());
         }
 

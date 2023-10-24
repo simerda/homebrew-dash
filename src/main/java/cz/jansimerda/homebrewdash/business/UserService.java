@@ -60,11 +60,11 @@ public class UserService extends AbstractCrudService<User, UUID> {
      * Examines possible User match based on username and email,
      * compares it with candidate User and possibly throws appropriate exception
      *
-     * @param match the user with same email or username as candidate, empty if no match
+     * @param match     the user with same email or username as candidate, empty if no match
      * @param candidate candidate user to be created/updated
      */
     private void enforceConstraints(Optional<User> match, User candidate) {
-        if(match.isEmpty()){
+        if (match.isEmpty()) {
             return;
         }
 

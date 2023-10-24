@@ -15,15 +15,12 @@ import java.time.LocalDateTime;
 @SpringBootTest
 public abstract class AbstractControllerTest extends AbstractTest {
 
-    private User admin;
-
-    private User user;
-
     @Autowired
     protected UserRepository userRepository;
-
     @Autowired
     protected UserSessionRepository sessionRepository;
+    private User admin;
+    private User user;
 
     @BeforeEach
     protected void setUp() {

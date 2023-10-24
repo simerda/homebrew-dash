@@ -35,7 +35,7 @@ public class UserSessionService {
     /**
      * Login user and provide a UserSession client can use for authentication
      *
-     * @param email user's email
+     * @param email    user's email
      * @param password user's password
      * @return user session
      */
