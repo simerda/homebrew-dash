@@ -39,7 +39,9 @@ public class UserSessionController {
 
     @PostMapping
     public ResponseEntity<UserSessionCreatedResponseDto> create(@Valid @RequestBody UserSessionRequestDto request) {
-        UserSessionCreatedResponseDto responseDto = createdDtoConverter.apply(userSessionService.create(request));
+        UserSessionCreatedResponseDto responseDto = createdDtoConverter.apply(
+                userSessionService.create(request.getEmail(), request.getPassword())
+        );
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(responseDto);

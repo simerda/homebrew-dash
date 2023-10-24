@@ -7,7 +7,6 @@ import cz.jansimerda.homebrewdash.model.User;
 import cz.jansimerda.homebrewdash.model.UserSession;
 import cz.jansimerda.homebrewdash.repository.UserRepository;
 import cz.jansimerda.homebrewdash.repository.UserSessionRepository;
-import cz.jansimerda.homebrewdash.rest.dto.request.UserSessionRequestDto;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -36,17 +35,18 @@ public class UserSessionService {
     /**
      * Login user and provide a UserSession client can use for authentication
      *
-     * @param requestDto user session request DTO
+     * @param email user's email
+     * @param password user's password
      * @return user session
      */
-    public UserSession create(UserSessionRequestDto requestDto) {
+    public UserSession create(String email, String password) {
         var exception = new UserUnauthenticatedException(
-                String.format("User with email %s doesn't exist or the password is invalid", requestDto.getEmail())
+                String.format("User with email %s doesn't exist or the password is invalid", email)
         );
 
-        User user = userRepository.getFirstByEmail(requestDto.getEmail()).orElseThrow(() -> exception);
+        User user = userRepository.getFirstByEmail(email).orElseThrow(() -> exception);
 
-        if (!passwordEncoder.matches(requestDto.getPassword(), user.getPassword())) {
+        if (!passwordEncoder.matches(password, user.getPassword())) {
             throw exception;
         }
 
