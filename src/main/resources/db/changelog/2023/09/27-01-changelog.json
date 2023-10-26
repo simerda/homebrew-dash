@@ -22,6 +22,9 @@
                 },
                 {
                   "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
                     "name": "user_id",
                     "type": "UUID"
                   }

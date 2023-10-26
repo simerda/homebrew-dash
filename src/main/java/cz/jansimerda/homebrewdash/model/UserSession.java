@@ -11,7 +11,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "user_sessions")
 @EntityListeners(AuditingEntityListener.class)
-public class UserSession implements DomainEntity<UUID> {
+public class UserSession implements DomainEntity<UUID>, CreationAware {
 
     /**
      * Constant for access token length
@@ -28,7 +28,7 @@ public class UserSession implements DomainEntity<UUID> {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Column(nullable = false, length = TOKEN_LENGTH, unique = true)
@@ -52,7 +52,7 @@ public class UserSession implements DomainEntity<UUID> {
     }
 
     public User getUser() {
-        return user;
+        return Objects.requireNonNull(user);
     }
 
     public void setUser(User user) {
@@ -63,7 +63,7 @@ public class UserSession implements DomainEntity<UUID> {
      * @return 64 character long opaque access token authenticating user session
      */
     public String getToken() {
-        return token;
+        return Objects.requireNonNull(token);
     }
 
     /**
@@ -77,7 +77,7 @@ public class UserSession implements DomainEntity<UUID> {
      * @return session expiration date and time
      */
     public LocalDateTime getExpiresAt() {
-        return expiresAt;
+        return Objects.requireNonNull(expiresAt);
     }
 
     /**
@@ -97,9 +97,18 @@ public class UserSession implements DomainEntity<UUID> {
     }
 
     /**
-     * @return time of creation
+     * @inheritDoc
      */
+    @Override
     public LocalDateTime getCreatedAt() {
-        return createdAt;
+        return Objects.requireNonNull(createdAt);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    @Override
+    public void setCreatedAt(LocalDateTime date) {
+        createdAt = date;
     }
 }
