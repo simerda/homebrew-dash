@@ -1,0 +1,181 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "1698333391902-1",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false,
+                      "primaryKey": true,
+                      "primaryKeyName": "pk_malt_changes"
+                    },
+                    "name": "id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "malt_id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "user_id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "color_ebc",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "change_grams",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "created_at",
+                    "type": "DATETIME"
+                  }
+                }
+              ],
+              "tableName": "malt_changes"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1698333391902-2",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false,
+                      "primaryKey": true,
+                      "primaryKeyName": "pk_malts"
+                    },
+                    "name": "id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "name",
+                    "type": "VARCHAR(200)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "manufacturer_name",
+                    "type": "VARCHAR(100)"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "created_by_user_id",
+                    "type": "UUID"
+                  }
+                }
+              ],
+              "tableName": "malts"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1698333391902-3",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "malt_id",
+              "baseTableName": "malt_changes",
+              "constraintName": "FK_MALT_CHANGES_ON_MALT",
+              "referencedColumnNames": "id",
+              "referencedTableName": "malts",
+              "onDelete": "RESTRICT",
+              "onUpdate": "RESTRICT"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1698333391902-4",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "user_id",
+              "baseTableName": "malt_changes",
+              "constraintName": "FK_MALT_CHANGES_ON_USER",
+              "referencedColumnNames": "id",
+              "referencedTableName": "users",
+              "onDelete": "RESTRICT",
+              "onUpdate": "RESTRICT"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1698333391902-5",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "created_by_user_id",
+              "baseTableName": "malts",
+              "constraintName": "FK_MALTS_ON_CREATED_BY_USER",
+              "referencedColumnNames": "id",
+              "referencedTableName": "users",
+              "onDelete": "RESTRICT",
+              "onUpdate": "RESTRICT"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
