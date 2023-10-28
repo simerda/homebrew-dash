@@ -1,5 +1,6 @@
 package cz.jansimerda.homebrewdash.rest.exception;
 
+import cz.jansimerda.homebrewdash.exception.EntityNotFoundException;
 import cz.jansimerda.homebrewdash.exception.ExposedException;
 import cz.jansimerda.homebrewdash.exception.ExposedExceptionTypeEnum;
 import jakarta.validation.ConstraintViolation;
@@ -41,6 +42,12 @@ public class ExceptionHandlerAdvice {
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public @ResponseBody ErrorResponse handleAccessDeniedException(AccessDeniedException e) {
         return new ErrorResponse(ExposedExceptionTypeEnum.ACCESS_DENIED, e.getMessage());
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public @ResponseBody ErrorResponse handleEntityNotFoundException(EntityNotFoundException e) {
+        return new ErrorResponse(e.getType(), e.getMessage());
     }
 
     @ExceptionHandler(ExposedException.class)

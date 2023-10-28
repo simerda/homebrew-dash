@@ -53,7 +53,7 @@ public abstract class AbstractCrudController<E extends DomainEntity<ID>, DRQ, DR
         var entity = service.readById(id);
 
         return entity.map(e -> ResponseEntity.ok(entityToDtoConverter.apply(e)))
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .orElseThrow(() -> new EntityNotFoundException(id));
     }
 
     @PutMapping("/{id}")
