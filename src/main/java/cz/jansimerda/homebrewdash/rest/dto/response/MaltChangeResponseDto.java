@@ -1,5 +1,6 @@
 package cz.jansimerda.homebrewdash.rest.dto.response;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class MaltChangeResponseDto {
@@ -9,6 +10,7 @@ public class MaltChangeResponseDto {
     private MaltResponseDto malt;
     private Integer colorEbc;
     private Integer changeGrams;
+    private LocalDateTime createdAt;
 
     public UUID getId() {
         return id;
@@ -48,5 +50,13 @@ public class MaltChangeResponseDto {
 
     public void setChangeGrams(Integer changeGrams) {
         this.changeGrams = changeGrams;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

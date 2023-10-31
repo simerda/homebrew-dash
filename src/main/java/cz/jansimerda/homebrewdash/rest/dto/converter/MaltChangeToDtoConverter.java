@@ -23,6 +23,7 @@ public class MaltChangeToDtoConverter implements Function<MaltChange, MaltChange
         dto.setMalt(maltToDtoConverter.apply(maltChange.getMalt()));
         maltChange.getColorEbc().ifPresent(dto::setColorEbc);
         dto.setChangeGrams(maltChange.getChangeGrams());
+        dto.setCreatedAt(maltChange.getCreatedAt());
 
         return dto;
     }
