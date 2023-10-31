@@ -25,7 +25,7 @@ public class MaltService extends AbstractCrudService<Malt, UUID> {
     @Override
     public Malt create(Malt entity) throws ConditionsNotMetException {
 
-        if (this.repository.existsByNameAndManufacturerName(
+        if (repository.existsByNameAndManufacturerName(
                 entity.getName(),
                 entity.getManufacturerName().orElse(null)
         )) {
@@ -39,7 +39,7 @@ public class MaltService extends AbstractCrudService<Malt, UUID> {
     @Override
     public Malt update(Malt entity) throws EntityNotFoundException, AccessDeniedException {
 
-        if (this.repository.existsByNameAndManufacturerNameExceptId(
+        if (repository.existsByNameAndManufacturerNameExceptId(
                 entity.getName(),
                 entity.getManufacturerName().orElse(null),
                 entity.getId()
