@@ -58,7 +58,7 @@ public class MaltService extends AbstractCrudService<Malt, UUID> {
 
     @Override
     public void deleteById(UUID id) throws EntityNotFoundException {
-        Malt existing = repository.findById(id).orElseThrow(() -> new EntityNotFoundException(id));
+        Malt existing = repository.findById(id).orElseThrow(() -> new EntityNotFoundException(Malt.class, id));
         ensureCanModifyEntity(existing);
 
         if (repository.existsByIdAndChangesIsNotNull(id)) {
