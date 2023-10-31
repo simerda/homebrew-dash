@@ -119,7 +119,7 @@ public class User implements DomainEntity<UUID>, CreationAware {
      * @return date and time of last update
      */
     public LocalDateTime getUpdatedAt() {
-        return this.updatedAt;
+        return Objects.requireNonNull(this.updatedAt);
     }
 
     /**
@@ -134,7 +134,7 @@ public class User implements DomainEntity<UUID>, CreationAware {
      */
     @Override
     public LocalDateTime getCreatedAt() {
-        return this.createdAt;
+        return Objects.requireNonNull(this.createdAt);
     }
 
     /**

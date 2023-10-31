@@ -33,7 +33,7 @@ public class Malt implements DomainEntity<UUID> {
      */
     @Override
     public UUID getId() {
-        return id;
+        return Objects.requireNonNull(id);
     }
 
     /**
@@ -76,7 +76,7 @@ public class Malt implements DomainEntity<UUID> {
      * @return user who created the record
      */
     public User getCreatedBy() {
-        return createdBy;
+        return Objects.requireNonNull(createdBy);
     }
 
     /**
@@ -92,6 +92,6 @@ public class Malt implements DomainEntity<UUID> {
      * @return list of MaltChange
      */
     public List<MaltChange> getChanges() {
-        return changes;
+        return Objects.requireNonNull(changes);
     }
 }

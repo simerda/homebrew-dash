@@ -40,7 +40,7 @@ public class MaltChange implements DomainEntity<UUID>, CreationAware {
      */
     @Override
     public UUID getId() {
-        return id;
+        return Objects.requireNonNull(id);
     }
 
     /**
