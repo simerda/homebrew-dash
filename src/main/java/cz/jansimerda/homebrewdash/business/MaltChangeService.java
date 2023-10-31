@@ -39,9 +39,8 @@ public class MaltChangeService extends AbstractCrudService<MaltChange, UUID> {
 
     @Override
     public MaltChange create(MaltChange entity) {
-        modifyingPreChecks(entity, c -> maltChangeRepository.sumChangeByMaltIdAndUserId(
-                c.getMalt().getId(), c.getUser().getId()
-        ));
+        modifyingPreChecks(entity, c -> c.getChangeGrams() >= 0 || maltChangeRepository.sumChangeByMaltIdAndUserId(
+                c.getMalt().getId(), c.getUser().getId()) + c.getChangeGrams() >= 0);
 
         return super.create(entity);
     }
@@ -67,7 +66,7 @@ public class MaltChangeService extends AbstractCrudService<MaltChange, UUID> {
     public MaltChange update(MaltChange entity) throws EntityNotFoundException {
         modifyingPreChecks(entity, c -> maltChangeRepository.sumChangeByMaltIdAndUserIdExceptId(
                 c.getMalt().getId(), c.getUser().getId(), c.getId()
-        ));
+        ) + c.getChangeGrams() >= 0);
 
         return super.update(entity);
     }
@@ -93,10 +92,10 @@ public class MaltChangeService extends AbstractCrudService<MaltChange, UUID> {
      * Runs checks before update or creation.
      * Ensures user has access for given user and ensures the malt stock won't go negative
      *
-     * @param change      MaltChange entity to be checked
-     * @param stockAmount anonymous function that receives MaltChange and returns stock amount for the Malt
+     * @param change          MaltChange entity to be checked
+     * @param stockSufficient anonymous function that receives MaltChange and returns stock amount for the Malt
      */
-    private void modifyingPreChecks(MaltChange change, Function<MaltChange, Integer> stockAmount) throws ConditionsNotMetException, EntityNotFoundException, AccessDeniedException {
+    private void modifyingPreChecks(MaltChange change, Function<MaltChange, Boolean> stockSufficient) throws ConditionsNotMetException, EntityNotFoundException, AccessDeniedException {
         Malt malt = maltRepository.findById(change.getMalt().getId())
                 .orElseThrow(() -> new EntityNotFoundException(Malt.class, change.getMalt().getId()));
         UUID userId = change.getUser().getId();
@@ -104,9 +103,8 @@ public class MaltChangeService extends AbstractCrudService<MaltChange, UUID> {
         ensureUserIsAccessible(userId);
         change.setUser(getUserOrThrow(userId));
         change.setMalt(malt);
-        int changeGrams = change.getChangeGrams();
         // if going bellow stock
-        if (changeGrams < 0 && stockAmount.apply(change) + changeGrams < 0) {
+        if (!stockSufficient.apply(change)) {
             throw new ConditionsNotMetException("Insufficient malt stock");
         }
     }
@@ -130,7 +128,7 @@ public class MaltChangeService extends AbstractCrudService<MaltChange, UUID> {
     private void ensureUserIsAccessible(UUID userId) throws AccessDeniedException {
         User loggedInUser = AuthenticationHelper.getUser();
         if (!loggedInUser.isAdmin() && !userId.equals(loggedInUser.getId())) {
-            throw new AccessDeniedException("Cannot access user with ID %s".formatted(userId));
+            throw new AccessDeniedException("Cannot access malt changes of user with ID %s".formatted(userId));
         }
     }
 }
