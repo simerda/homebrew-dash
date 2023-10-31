@@ -52,7 +52,7 @@ class MaltChangeServiceTest extends AbstractServiceTest {
         Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
 
         // malt stock level
-        Mockito.when(maltChangeRepository.sumChangeByMaltIdAndUserId(malt.getId(), user.getId())).thenReturn(100);
+        Mockito.when(maltChangeRepository.sumChangeByMaltAndUser(malt.getId(), user.getId())).thenReturn(100);
 
         // mock save
         Mockito.when(maltChangeRepository.save(Mockito.any(MaltChange.class)))
@@ -75,7 +75,7 @@ class MaltChangeServiceTest extends AbstractServiceTest {
         Mockito.verify(maltRepository, Mockito.times(1)).findById(malt.getId());
         Mockito.verify(userRepository, Mockito.times(1)).findById(user.getId());
         Mockito.verify(maltChangeRepository, Mockito.times(1))
-                .sumChangeByMaltIdAndUserId(malt.getId(), user.getId());
+                .sumChangeByMaltAndUser(malt.getId(), user.getId());
         Mockito.verify(maltChangeRepository, Mockito.times(1)).save(change);
     }
 
@@ -97,7 +97,7 @@ class MaltChangeServiceTest extends AbstractServiceTest {
         Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
 
         // malt stock level
-        Mockito.when(maltChangeRepository.sumChangeByMaltIdAndUserId(malt.getId(), user.getId())).thenReturn(100);
+        Mockito.when(maltChangeRepository.sumChangeByMaltAndUser(malt.getId(), user.getId())).thenReturn(100);
 
         // mock save
         Mockito.when(maltChangeRepository.save(Mockito.any(MaltChange.class)))
@@ -120,7 +120,7 @@ class MaltChangeServiceTest extends AbstractServiceTest {
         Mockito.verify(maltRepository, Mockito.times(1)).findById(malt.getId());
         Mockito.verify(userRepository, Mockito.times(1)).findById(user.getId());
         Mockito.verify(maltChangeRepository, Mockito.times(1))
-                .sumChangeByMaltIdAndUserId(malt.getId(), user.getId());
+                .sumChangeByMaltAndUser(malt.getId(), user.getId());
         Mockito.verify(maltChangeRepository, Mockito.times(1)).save(change);
     }
 
@@ -142,14 +142,14 @@ class MaltChangeServiceTest extends AbstractServiceTest {
         Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
 
         // malt stock level
-        Mockito.when(maltChangeRepository.sumChangeByMaltIdAndUserId(malt.getId(), user.getId())).thenReturn(100);
+        Mockito.when(maltChangeRepository.sumChangeByMaltAndUser(malt.getId(), user.getId())).thenReturn(100);
 
         Assertions.assertThrowsExactly(ConditionsNotMetException.class, () -> maltChangeService.create(change));
 
         Mockito.verify(maltRepository, Mockito.times(1)).findById(malt.getId());
         Mockito.verify(userRepository, Mockito.times(1)).findById(user.getId());
         Mockito.verify(maltChangeRepository, Mockito.times(1))
-                .sumChangeByMaltIdAndUserId(malt.getId(), user.getId());
+                .sumChangeByMaltAndUser(malt.getId(), user.getId());
     }
 
     @Test
@@ -363,7 +363,7 @@ class MaltChangeServiceTest extends AbstractServiceTest {
         Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
 
         // malt stock level
-        Mockito.when(maltChangeRepository.sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), change.getId())).thenReturn(100);
+        Mockito.when(maltChangeRepository.sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), change.getId())).thenReturn(100);
 
         // mock save
         Mockito.when(maltChangeRepository.save(change)).thenReturn(change);
@@ -376,7 +376,7 @@ class MaltChangeServiceTest extends AbstractServiceTest {
         Mockito.verify(maltRepository, Mockito.times(1)).findById(malt.getId());
         Mockito.verify(userRepository, Mockito.times(1)).findById(user.getId());
         Mockito.verify(maltChangeRepository, Mockito.times(1))
-                .sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), change.getId());
+                .sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), change.getId());
         Mockito.verify(maltChangeRepository, Mockito.times(1)).save(change);
     }
 
@@ -401,7 +401,7 @@ class MaltChangeServiceTest extends AbstractServiceTest {
         Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
 
         // malt stock level
-        Mockito.when(maltChangeRepository.sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), change.getId())).thenReturn(100);
+        Mockito.when(maltChangeRepository.sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), change.getId())).thenReturn(100);
 
         // mock save
         Mockito.when(maltChangeRepository.save(change)).thenReturn(change);
@@ -414,7 +414,7 @@ class MaltChangeServiceTest extends AbstractServiceTest {
         Mockito.verify(maltRepository, Mockito.times(1)).findById(malt.getId());
         Mockito.verify(userRepository, Mockito.times(1)).findById(user.getId());
         Mockito.verify(maltChangeRepository, Mockito.times(1))
-                .sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), change.getId());
+                .sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), change.getId());
         Mockito.verify(maltChangeRepository, Mockito.times(1)).save(change);
     }
 
@@ -438,14 +438,14 @@ class MaltChangeServiceTest extends AbstractServiceTest {
         Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
 
         // malt stock level
-        Mockito.when(maltChangeRepository.sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), change.getId())).thenReturn(100);
+        Mockito.when(maltChangeRepository.sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), change.getId())).thenReturn(100);
 
         Assertions.assertThrowsExactly(ConditionsNotMetException.class, () -> maltChangeService.update(change));
 
         Mockito.verify(maltRepository, Mockito.times(1)).findById(malt.getId());
         Mockito.verify(userRepository, Mockito.times(1)).findById(user.getId());
         Mockito.verify(maltChangeRepository, Mockito.times(1))
-                .sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), change.getId());
+                .sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), change.getId());
     }
 
     @Test
@@ -536,12 +536,12 @@ class MaltChangeServiceTest extends AbstractServiceTest {
         // mock repository calls
         Mockito.when(maltChangeRepository.findById(change.getId())).thenReturn(Optional.of(change));
         // mock stock level
-        Mockito.when(maltChangeRepository.sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), change.getId())).thenReturn(0);
+        Mockito.when(maltChangeRepository.sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), change.getId())).thenReturn(0);
 
         maltChangeService.deleteById(change.getId());
 
         Mockito.verify(maltChangeRepository, Mockito.times(1)).findById(change.getId());
-        Mockito.verify(maltChangeRepository, Mockito.times(1)).sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), change.getId());
+        Mockito.verify(maltChangeRepository, Mockito.times(1)).sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), change.getId());
         Mockito.verify(maltChangeRepository, Mockito.times(1)).deleteById(change.getId());
     }
 
@@ -562,12 +562,12 @@ class MaltChangeServiceTest extends AbstractServiceTest {
         // mock repository calls
         Mockito.when(maltChangeRepository.findById(change.getId())).thenReturn(Optional.of(change));
         // mock stock level
-        Mockito.when(maltChangeRepository.sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), change.getId())).thenReturn(0);
+        Mockito.when(maltChangeRepository.sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), change.getId())).thenReturn(0);
 
         maltChangeService.deleteById(change.getId());
 
         Mockito.verify(maltChangeRepository, Mockito.times(1)).findById(change.getId());
-        Mockito.verify(maltChangeRepository, Mockito.times(1)).sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), change.getId());
+        Mockito.verify(maltChangeRepository, Mockito.times(1)).sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), change.getId());
         Mockito.verify(maltChangeRepository, Mockito.times(1)).deleteById(change.getId());
     }
 
@@ -632,12 +632,12 @@ class MaltChangeServiceTest extends AbstractServiceTest {
         // mock repository calls
         Mockito.when(maltChangeRepository.findById(change.getId())).thenReturn(Optional.of(change));
         // mock stock level
-        Mockito.when(maltChangeRepository.sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), change.getId())).thenReturn(-250);
+        Mockito.when(maltChangeRepository.sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), change.getId())).thenReturn(-250);
 
         Assertions.assertThrowsExactly(ConditionsNotMetException.class, () -> maltChangeService.deleteById(change.getId()));
 
         Mockito.verify(maltChangeRepository, Mockito.times(1)).findById(change.getId());
-        Mockito.verify(maltChangeRepository, Mockito.times(1)).sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), change.getId());
+        Mockito.verify(maltChangeRepository, Mockito.times(1)).sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), change.getId());
     }
 
     /**

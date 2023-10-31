@@ -39,7 +39,7 @@ public class MaltChangeService extends AbstractCrudService<MaltChange, UUID> {
 
     @Override
     public MaltChange create(MaltChange entity) {
-        modifyingPreChecks(entity, c -> c.getChangeGrams() >= 0 || maltChangeRepository.sumChangeByMaltIdAndUserId(
+        modifyingPreChecks(entity, c -> c.getChangeGrams() >= 0 || maltChangeRepository.sumChangeByMaltAndUser(
                 c.getMalt().getId(), c.getUser().getId()) + c.getChangeGrams() >= 0);
 
         return super.create(entity);
@@ -64,7 +64,7 @@ public class MaltChangeService extends AbstractCrudService<MaltChange, UUID> {
 
     @Override
     public MaltChange update(MaltChange entity) throws EntityNotFoundException {
-        modifyingPreChecks(entity, c -> maltChangeRepository.sumChangeByMaltIdAndUserIdExceptId(
+        modifyingPreChecks(entity, c -> maltChangeRepository.sumChangeByMaltAndUserExceptChangeId(
                 c.getMalt().getId(), c.getUser().getId(), c.getId()
         ) + c.getChangeGrams() >= 0);
 
@@ -77,7 +77,7 @@ public class MaltChangeService extends AbstractCrudService<MaltChange, UUID> {
                 .orElseThrow(() -> new EntityNotFoundException(MaltChange.class, id));
 
         ensureUserIsAccessible(change.getUser().getId());
-        if (change.getChangeGrams() > 0 && maltChangeRepository.sumChangeByMaltIdAndUserIdExceptId(
+        if (change.getChangeGrams() > 0 && maltChangeRepository.sumChangeByMaltAndUserExceptChangeId(
                 change.getMalt().getId(),
                 change.getUser().getId(),
                 id

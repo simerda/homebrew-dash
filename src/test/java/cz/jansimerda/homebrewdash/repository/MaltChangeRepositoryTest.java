@@ -76,13 +76,13 @@ class MaltChangeRepositoryTest extends AbstractTest {
         maltRepository.save(malt);
 
         // test zero sum
-        Assertions.assertEquals(0, maltChangeRepository.sumChangeByMaltIdAndUserId(malt.getId(), user.getId()));
+        Assertions.assertEquals(0, maltChangeRepository.sumChangeByMaltAndUser(malt.getId(), user.getId()));
 
         // store changes
         maltChangeRepository.saveAll(changes);
 
         // test
-        Assertions.assertEquals(70, maltChangeRepository.sumChangeByMaltIdAndUserId(malt.getId(), user.getId()));
+        Assertions.assertEquals(70, maltChangeRepository.sumChangeByMaltAndUser(malt.getId(), user.getId()));
     }
 
     @Test
@@ -135,14 +135,14 @@ class MaltChangeRepositoryTest extends AbstractTest {
         maltRepository.save(malt);
 
         // test zero sum
-        Assertions.assertEquals(0, maltChangeRepository.sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), UUID.randomUUID()));
+        Assertions.assertEquals(0, maltChangeRepository.sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), UUID.randomUUID()));
 
         // store changes
         maltChangeRepository.saveAll(changes);
 
         // test all
-        Assertions.assertEquals(70, maltChangeRepository.sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), UUID.randomUUID()));
-        Assertions.assertEquals(20, maltChangeRepository.sumChangeByMaltIdAndUserIdExceptId(malt.getId(), user.getId(), changes.get(2).getId()));
+        Assertions.assertEquals(70, maltChangeRepository.sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), UUID.randomUUID()));
+        Assertions.assertEquals(20, maltChangeRepository.sumChangeByMaltAndUserExceptChangeId(malt.getId(), user.getId(), changes.get(2).getId()));
     }
 
     @Test
