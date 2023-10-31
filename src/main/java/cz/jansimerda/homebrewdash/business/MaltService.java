@@ -52,7 +52,7 @@ public class MaltService extends AbstractCrudService<Malt, UUID> {
 
         ensureCanModifyEntity(existing);
 
-        entity.setCreatedBy(AuthenticationHelper.getUser());
+        entity.setCreatedBy(existing.getCreatedBy());
         return repository.save(entity);
     }
 
