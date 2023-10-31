@@ -75,6 +75,8 @@ public class MaltChangeService extends AbstractCrudService<MaltChange, UUID> {
     public void deleteById(UUID id) throws EntityNotFoundException {
         MaltChange change = maltChangeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(MaltChange.class, id));
+
+        ensureUserIsAccessible(change.getUser().getId());
         if (change.getChangeGrams() > 0 && maltChangeRepository.sumChangeByMaltIdAndUserIdExceptId(
                 change.getMalt().getId(),
                 change.getUser().getId(),
