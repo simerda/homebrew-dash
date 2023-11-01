@@ -92,10 +92,10 @@ public class MaltChangeService extends AbstractCrudService<MaltChange, UUID> {
 
     /**
      * Runs checks before update or creation.
-     * Ensures user has access for given user and ensures the malt stock won't go negative
+     * Ensures user has access for given user and the malt stock won't go negative
      *
      * @param change          MaltChange entity to be checked
-     * @param stockSufficient anonymous function that receives MaltChange and returns stock amount for the Malt
+     * @param stockSufficient anonymous function that receives MaltChange and returns whether the stock will be sufficient after performing the operation
      */
     private void modifyingPreChecks(MaltChange change, Function<MaltChange, Boolean> stockSufficient) throws ConditionsNotMetException, EntityNotFoundException, AccessDeniedException {
         Malt malt = maltRepository.findById(change.getMalt().getId())
