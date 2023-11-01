@@ -27,7 +27,7 @@ class MaltChangeRepositoryTest extends AbstractTest {
     private UserRepository userRepository;
 
     @Test
-    void sumChangeByMaltIdAndUserId() {
+    void sumChangeByMaltAndUser() {
         // init
         User user = userRepository.save(createDummyUser());
 
@@ -86,7 +86,7 @@ class MaltChangeRepositoryTest extends AbstractTest {
     }
 
     @Test
-    void sumChangeByMaltIdAndUserIdExceptId() {
+    void sumChangeByMaltAndUserExceptChangeId() {
         // init
         User user = userRepository.save(createDummyUser());
 
