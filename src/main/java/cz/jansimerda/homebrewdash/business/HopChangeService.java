@@ -8,7 +8,6 @@ import cz.jansimerda.homebrewdash.model.HopChange;
 import cz.jansimerda.homebrewdash.model.User;
 import cz.jansimerda.homebrewdash.repository.HopChangeRepository;
 import cz.jansimerda.homebrewdash.repository.HopRepository;
-import cz.jansimerda.homebrewdash.repository.MaltChangeRepository;
 import cz.jansimerda.homebrewdash.repository.UserRepository;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
@@ -26,18 +25,16 @@ public class HopChangeService extends AbstractCrudService<HopChange, UUID> {
     private final HopRepository hopRepository;
 
     private final UserRepository userRepository;
-    private final MaltChangeRepository maltChangeRepository;
 
     protected HopChangeService(
             HopChangeRepository hopChangeRepository,
             HopRepository hopRepository,
-            UserRepository userRepository,
-            MaltChangeRepository maltChangeRepository) {
+            UserRepository userRepository
+    ) {
         super(hopChangeRepository);
         this.hopChangeRepository = hopChangeRepository;
         this.hopRepository = hopRepository;
         this.userRepository = userRepository;
-        this.maltChangeRepository = maltChangeRepository;
     }
 
     @Override
@@ -103,7 +100,7 @@ public class HopChangeService extends AbstractCrudService<HopChange, UUID> {
             );
         }
 
-        maltChangeRepository.deleteById(id);
+        hopChangeRepository.deleteById(id);
     }
 
     /**
