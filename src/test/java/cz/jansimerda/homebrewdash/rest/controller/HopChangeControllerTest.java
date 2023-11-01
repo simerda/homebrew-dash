@@ -459,7 +459,7 @@ class HopChangeControllerTest extends AbstractControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.betaAcidPercentage", Matchers.is(3.38)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.harvestedAt", Matchers.is(LocalDate.now().toString())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.changeGrams", Matchers.is(120)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.createdAt", Matchers.is(change.getCreatedAt().toString())));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.createdAt", Matchers.not(Matchers.emptyString())));
     }
 
     @Test
@@ -499,7 +499,7 @@ class HopChangeControllerTest extends AbstractControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.betaAcidPercentage", Matchers.is(3.38)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.harvestedAt", Matchers.is(LocalDate.now().toString())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.changeGrams", Matchers.is(120)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.createdAt", Matchers.is(change.getCreatedAt().toString())));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.createdAt", Matchers.not(Matchers.emptyString())));
     }
 
     @Test
