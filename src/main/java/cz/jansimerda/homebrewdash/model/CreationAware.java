@@ -6,10 +6,10 @@ public interface CreationAware {
     /**
      * @return date and time of creation
      */
-    public LocalDateTime getCreatedAt();
+    LocalDateTime getCreatedAt();
 
     /**
      * @param date date and time of creation
      */
-    public void setCreatedAt(LocalDateTime date);
+    void setCreatedAt(LocalDateTime date);
 }

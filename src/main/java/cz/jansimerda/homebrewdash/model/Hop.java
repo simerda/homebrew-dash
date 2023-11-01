@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "hops")
-public class Hop implements DomainEntity<UUID>{
+public class Hop implements DomainEntity<UUID> {
 
     @Id
     @GeneratedValue

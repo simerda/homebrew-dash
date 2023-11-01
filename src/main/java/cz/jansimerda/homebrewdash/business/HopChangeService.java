@@ -87,7 +87,7 @@ public class HopChangeService extends AbstractCrudService<HopChange, UUID> {
                 .orElseThrow(() -> new EntityNotFoundException(HopChange.class, id));
 
         ensureUserIsAccessible(change.getUser().getId());
-        if(change.getChangeGrams() > 0 && hopChangeRepository.sumChangeByHopAndUserExceptChangeId(
+        if (change.getChangeGrams() > 0 && hopChangeRepository.sumChangeByHopAndUserExceptChangeId(
                 change.getHop().getId(),
                 change.getAlphaAcidPercentage(),
                 change.getBetaAcidPercentage(),
@@ -107,7 +107,7 @@ public class HopChangeService extends AbstractCrudService<HopChange, UUID> {
      * Run checks before update or creation.
      * Ensures user has access for given user and ensures hop stock won't go negative
      *
-     * @param change HopChange entity to be checked
+     * @param change          HopChange entity to be checked
      * @param stockSufficient anonymous function that receives HopChange and returns whether the stock will be sufficient after performing the operation
      */
     private void modifyingPreChecks(HopChange change, Function<HopChange, Boolean> stockSufficient) throws ConditionsNotMetException, EntityNotFoundException, AccessDeniedException {

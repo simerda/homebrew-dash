@@ -35,7 +35,7 @@ public class HopService extends AbstractCrudService<Hop, UUID> {
     @Override
     public Hop update(Hop entity) throws EntityNotFoundException, AccessDeniedException {
 
-        if(repository.existsByNameExceptId(entity.getName(), entity.getId())){
+        if (repository.existsByNameExceptId(entity.getName(), entity.getId())) {
             throwOnDuplicate(entity.getName());
         }
 
@@ -52,7 +52,7 @@ public class HopService extends AbstractCrudService<Hop, UUID> {
         Hop existing = repository.findById(id).orElseThrow(() -> new EntityNotFoundException(Hop.class, id));
         ensureCanModifyEntity(existing);
 
-        if(repository.existsByIdAndChangesIsNotNull(id)) {
+        if (repository.existsByIdAndChangesIsNotNull(id)) {
             throw new ConditionsNotMetException(
                     "Hop %s has some changes attached and therefore cannot be removed".formatted(existing.getName())
             );
