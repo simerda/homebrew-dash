@@ -1,11 +1,14 @@
 package cz.jansimerda.homebrewdash.rest.dto.request;
 
+import cz.jansimerda.homebrewdash.rest.validation.constraints.Date;
 import cz.jansimerda.homebrewdash.rest.validation.constraints.NotZero;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.validation.annotation.Validated;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 @Validated
 public class YeastChangeRequestDto {
@@ -17,22 +20,23 @@ public class YeastChangeRequestDto {
     @NotBlank
     private String userId;
 
-    private LocalDate expirationDate;
+    @Date
+    private String expirationDate;
 
     @NotZero
     @NotNull
     private Integer changeGrams;
 
-    public String getYeastId() {
-        return yeastId;
+    public UUID getYeastId() {
+        return UUID.fromString(yeastId);
     }
 
-    public String getUserId() {
-        return userId;
+    public UUID getUserId() {
+        return UUID.fromString(userId);
     }
 
     public LocalDate getExpirationDate() {
-        return expirationDate;
+        return expirationDate == null ? null : LocalDate.parse(expirationDate, DateTimeFormatter.ISO_LOCAL_DATE);
     }
 
     public Integer getChangeGrams() {

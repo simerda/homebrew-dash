@@ -2,6 +2,7 @@ package cz.jansimerda.homebrewdash.rest.dto.request;
 
 import cz.jansimerda.homebrewdash.model.enums.YeastKindEnum;
 import cz.jansimerda.homebrewdash.model.enums.YeastTypeEnum;
+import cz.jansimerda.homebrewdash.rest.validation.constraints.EnumValue;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,11 +19,13 @@ public class YeastRequestDto {
     @Size(min = 1, max = 100)
     private String manufacturerName;
 
+    @EnumValue(enumClass = YeastTypeEnum.class)
     @NotNull
-    private YeastTypeEnum type;
+    private String type;
 
+    @EnumValue(enumClass = YeastKindEnum.class)
     @NotNull
-    private YeastKindEnum kind;
+    private String kind;
 
     public String getName() {
         return StringUtils.trim(name);
@@ -33,10 +36,10 @@ public class YeastRequestDto {
     }
 
     public YeastTypeEnum getType() {
-        return type;
+        return YeastTypeEnum.valueOf(type);
     }
 
     public YeastKindEnum getKind() {
-        return kind;
+        return YeastKindEnum.valueOf(kind);
     }
 }

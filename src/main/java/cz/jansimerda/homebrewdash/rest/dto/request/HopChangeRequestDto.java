@@ -1,11 +1,17 @@
 package cz.jansimerda.homebrewdash.rest.dto.request;
 
+import cz.jansimerda.homebrewdash.rest.validation.constraints.Date;
 import cz.jansimerda.homebrewdash.rest.validation.constraints.NotZero;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.validation.annotation.Validated;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 @Validated
 public class HopChangeRequestDto {
@@ -28,19 +34,19 @@ public class HopChangeRequestDto {
     private BigDecimal betaAcidPercentage;
 
     @NotNull
-    @PastOrPresent
-    private LocalDate harvestedAt;
+    @Date(before = Date.DATE_NOW, beforeInclusive = true)
+    private String harvestedAt;
 
     @NotZero
     @NotNull
     private Integer changeGrams;
 
-    public String getHopId() {
-        return hopId;
+    public UUID getHopId() {
+        return UUID.fromString(hopId);
     }
 
-    public String getUserId() {
-        return userId;
+    public UUID getUserId() {
+        return UUID.fromString(userId);
     }
 
     public BigDecimal getAlphaAcidPercentage() {
@@ -52,7 +58,7 @@ public class HopChangeRequestDto {
     }
 
     public LocalDate getHarvestedAt() {
-        return harvestedAt;
+        return LocalDate.parse(harvestedAt, DateTimeFormatter.ISO_LOCAL_DATE);
     }
 
     public Integer getChangeGrams() {

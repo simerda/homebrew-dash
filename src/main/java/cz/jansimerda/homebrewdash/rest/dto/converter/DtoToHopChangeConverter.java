@@ -6,7 +6,6 @@ import cz.jansimerda.homebrewdash.model.User;
 import cz.jansimerda.homebrewdash.rest.dto.request.HopChangeRequestDto;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
 import java.util.function.Function;
 
 @Component
@@ -15,9 +14,9 @@ public class DtoToHopChangeConverter implements Function<HopChangeRequestDto, Ho
     @Override
     public HopChange apply(HopChangeRequestDto dto) {
         User user = new User();
-        user.setId(UUID.fromString(dto.getUserId()));
+        user.setId(dto.getUserId());
         Hop hop = new Hop();
-        hop.setId(UUID.fromString(dto.getHopId()));
+        hop.setId(dto.getHopId());
         HopChange change = new HopChange();
         change.setUser(user);
         change.setHop(hop);
