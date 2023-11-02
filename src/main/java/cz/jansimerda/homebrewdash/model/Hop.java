@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -36,7 +37,7 @@ public class Hop implements DomainEntity<UUID> {
 
     @Override
     public UUID getId() {
-        return id;
+        return Objects.requireNonNull(id);
     }
 
     /**
@@ -51,7 +52,7 @@ public class Hop implements DomainEntity<UUID> {
      * @return name of the hop
      */
     public String getName() {
-        return name;
+        return Objects.requireNonNull(name);
     }
 
     /**
@@ -93,7 +94,7 @@ public class Hop implements DomainEntity<UUID> {
      * @return HSI (hop storage index) of the hop
      */
     public BigDecimal getHopStorageIndex() {
-        return hopStorageIndex;
+        return Objects.requireNonNull(hopStorageIndex);
     }
 
     /**
@@ -107,7 +108,7 @@ public class Hop implements DomainEntity<UUID> {
      * @return user who created the record
      */
     public User getCreatedBy() {
-        return createdBy;
+        return Objects.requireNonNull(createdBy);
     }
 
     /**
@@ -123,6 +124,6 @@ public class Hop implements DomainEntity<UUID> {
      * @return list of HopChange
      */
     public List<HopChange> getChanges() {
-        return changes;
+        return Objects.requireNonNull(changes);
     }
 }

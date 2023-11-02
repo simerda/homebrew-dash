@@ -47,7 +47,7 @@ public class HopChange implements DomainEntity<UUID>, CreationAware {
      */
     @Override
     public UUID getId() {
-        return id;
+        return Objects.requireNonNull(id);
     }
 
     /**
@@ -76,7 +76,7 @@ public class HopChange implements DomainEntity<UUID>, CreationAware {
      * @return user, change is attached to
      */
     public User getUser() {
-        return user;
+        return Objects.requireNonNull(user);
     }
 
     /**
@@ -90,7 +90,7 @@ public class HopChange implements DomainEntity<UUID>, CreationAware {
      * @return alpha acid percentage of the hop
      */
     public BigDecimal getAlphaAcidPercentage() {
-        return alphaAcidPercentage;
+        return Objects.requireNonNull(alphaAcidPercentage);
     }
 
     /**
@@ -104,7 +104,7 @@ public class HopChange implements DomainEntity<UUID>, CreationAware {
      * @return beta acid percentage of the hop
      */
     public BigDecimal getBetaAcidPercentage() {
-        return betaAcidPercentage;
+        return Objects.requireNonNull(betaAcidPercentage);
     }
 
     /**
@@ -118,7 +118,7 @@ public class HopChange implements DomainEntity<UUID>, CreationAware {
      * @return date of harvest
      */
     public LocalDate getHarvestedAt() {
-        return harvestedAt;
+        return Objects.requireNonNull(harvestedAt);
     }
 
     /**
@@ -147,7 +147,7 @@ public class HopChange implements DomainEntity<UUID>, CreationAware {
      */
     @Override
     public LocalDateTime getCreatedAt() {
-        return createdAt;
+        return Objects.requireNonNull(createdAt);
     }
 
     /**
