@@ -1,0 +1,199 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "1698884291744-1",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false,
+                      "primaryKey": true,
+                      "primaryKeyName": "pk_yeast_changes"
+                    },
+                    "name": "id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "yeast_id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "user_id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "expiration_date",
+                    "type": "DATE"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "change_grams",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "created_at",
+                    "type": "DATETIME"
+                  }
+                }
+              ],
+              "tableName": "yeast_changes"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1698884291744-2",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false,
+                      "primaryKey": true,
+                      "primaryKeyName": "pk_yeasts"
+                    },
+                    "name": "id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "name",
+                    "type": "VARCHAR(200)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "manufacturer_name",
+                    "type": "VARCHAR(100)"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "type",
+                    "type": "TINYINT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "kind",
+                    "type": "TINYINT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "created_by_user_id",
+                    "type": "UUID"
+                  }
+                }
+              ],
+              "tableName": "yeasts"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1698884291744-3",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "created_by_user_id",
+              "baseTableName": "yeasts",
+              "constraintName": "FK_YEASTS_ON_CREATED_BY_USER",
+              "referencedColumnNames": "id",
+              "referencedTableName": "users",
+              "onDelete": "RESTRICT",
+              "onUpdate": "RESTRICT"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1698884291744-4",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "user_id",
+              "baseTableName": "yeast_changes",
+              "constraintName": "FK_YEAST_CHANGES_ON_USER",
+              "referencedColumnNames": "id",
+              "referencedTableName": "users",
+              "onDelete": "RESTRICT",
+              "onUpdate": "RESTRICT"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1698884291744-5",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "yeast_id",
+              "baseTableName": "yeast_changes",
+              "constraintName": "FK_YEAST_CHANGES_ON_YEAST",
+              "referencedColumnNames": "id",
+              "referencedTableName": "yeasts",
+              "onDelete": "RESTRICT",
+              "onUpdate": "RESTRICT"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
