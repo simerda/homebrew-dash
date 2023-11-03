@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.OptionalInt;
+import java.util.Optional;
 import java.util.UUID;
 
 @Entity
@@ -67,8 +67,8 @@ public class MaltChange implements DomainEntity<UUID>, CreationAware {
         this.user = user;
     }
 
-    public OptionalInt getColorEbc() {
-        return colorEbc == null ? OptionalInt.empty() : OptionalInt.of(colorEbc);
+    public Optional<Integer> getColorEbc() {
+        return Optional.ofNullable(colorEbc);
     }
 
     public void setColorEbc(Integer colorEbc) {

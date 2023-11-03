@@ -7,7 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import org.springframework.validation.annotation.Validated;
 
-import java.util.OptionalInt;
 import java.util.UUID;
 
 @Validated
@@ -36,8 +35,8 @@ public class MaltChangeRequestDto {
         return UUID.fromString(maltId);
     }
 
-    public OptionalInt getColorEbc() {
-        return colorEbc == null ? OptionalInt.empty() : OptionalInt.of(colorEbc);
+    public Integer getColorEbc() {
+        return colorEbc;
     }
 
     public Integer getChangeGrams() {

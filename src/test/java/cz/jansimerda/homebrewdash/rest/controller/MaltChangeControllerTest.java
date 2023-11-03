@@ -246,7 +246,7 @@ class MaltChangeControllerTest extends AbstractControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].id", Matchers.hasItem(change.getId().toString())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].userId", Matchers.hasItem(getUser().getId().toString())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].changeGrams", Matchers.hasItem(change.getChangeGrams())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[*].colorEbc", Matchers.hasItem(change.getColorEbc().isPresent() ? change.getColorEbc().getAsInt() : null)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[*].colorEbc", Matchers.hasItem(change.getColorEbc().orElse(null))))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].createdAt", Matchers.hasItem(Matchers.matchesPattern(".+"))))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].malt.id", Matchers.hasItem(malt.getId().toString())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].malt.name", Matchers.hasItem(malt.getName())))
@@ -271,7 +271,7 @@ class MaltChangeControllerTest extends AbstractControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].id", Matchers.hasItem(change.getId().toString())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].userId", Matchers.hasItem(getUser().getId().toString())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].changeGrams", Matchers.hasItem(change.getChangeGrams())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[*].colorEbc", Matchers.hasItem(change.getColorEbc().isPresent() ? change.getColorEbc().getAsInt() : null)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[*].colorEbc", Matchers.hasItem(change.getColorEbc().orElse(null))))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].createdAt", Matchers.hasItem(Matchers.matchesPattern(".+"))))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].malt.id", Matchers.hasItem(malt.getId().toString())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*].malt.name", Matchers.hasItem(malt.getName())))
@@ -309,7 +309,7 @@ class MaltChangeControllerTest extends AbstractControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.malt.name", Matchers.is(malt.getName())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.malt.manufacturerName", Matchers.is(malt.getManufacturerName().orElse(null))))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.malt.createdByUserId", Matchers.is(getUser().getId().toString())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.colorEbc", Matchers.is(change.getColorEbc().isPresent() ? change.getColorEbc().getAsInt() : null)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.colorEbc", Matchers.is(change.getColorEbc().orElse(null))))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.changeGrams", Matchers.is(change.getChangeGrams())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.createdAt", Matchers.not(Matchers.emptyString())));
     }
@@ -334,7 +334,7 @@ class MaltChangeControllerTest extends AbstractControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.malt.name", Matchers.is(malt.getName())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.malt.manufacturerName", Matchers.is(malt.getManufacturerName().orElse(null))))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.malt.createdByUserId", Matchers.is(getUser().getId().toString())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.colorEbc", Matchers.is(change.getColorEbc().isPresent() ? change.getColorEbc().getAsInt() : null)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.colorEbc", Matchers.is(change.getColorEbc().orElse(null))))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.changeGrams", Matchers.is(change.getChangeGrams())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.createdAt", Matchers.not(Matchers.emptyString())));
     }
