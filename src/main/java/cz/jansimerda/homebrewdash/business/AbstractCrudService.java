@@ -44,6 +44,11 @@ public abstract class AbstractCrudService<E extends DomainEntity<K>, K> {
         return repository.findById(id);
     }
 
+    /**
+     * Fetches all entities from the repository
+     *
+     * @return list of entities
+     */
     public List<E> readAll() {
         return repository.findAll();
     }

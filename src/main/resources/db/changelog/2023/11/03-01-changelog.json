@@ -1,0 +1,180 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "1698969350535-1",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false,
+                      "primaryKey": true,
+                      "primaryKeyName": "pk_beers"
+                    },
+                    "name": "id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "name",
+                    "type": "VARCHAR(200)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "description",
+                    "type": "VARCHAR(10000)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "original_gravity",
+                    "type": "DECIMAL(6, 5)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "alcohol_by_volume",
+                    "type": "DECIMAL(4, 2)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "bitterness_ibu",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "color_ebc",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "volume_brewed",
+                    "type": "DECIMAL(7, 1)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "volume_remaining",
+                    "type": "DECIMAL(7, 1)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "final_gravity_threshold",
+                    "type": "DECIMAL(6, 5)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "final_gravity",
+                    "type": "DECIMAL(6, 5)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "fermentation_temperature_threshold",
+                    "type": "DECIMAL(4, 2)"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "state",
+                    "type": "TINYINT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "brewed_at",
+                    "type": "DATE"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "fermented_at",
+                    "type": "DATE"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "matured_at",
+                    "type": "DATE"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "consumed_at",
+                    "type": "DATE"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "created_by_user_id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "updated_at",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "created_at",
+                    "type": "DATETIME"
+                  }
+                }
+              ],
+              "tableName": "beers"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1698969350535-2",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "created_by_user_id",
+              "baseTableName": "beers",
+              "constraintName": "FK_BEERS_ON_CREATED_BY_USER",
+              "referencedColumnNames": "id",
+              "referencedTableName": "users",
+              "onDelete": "CASCADE",
+              "onUpdate": "CASCADE"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
