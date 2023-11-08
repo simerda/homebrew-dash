@@ -3,6 +3,7 @@ package cz.jansimerda.homebrewdash.business;
 import cz.jansimerda.homebrewdash.authentication.CustomUserDetails;
 import cz.jansimerda.homebrewdash.exception.UserUnauthenticatedException;
 import cz.jansimerda.homebrewdash.helpers.AuthenticationHelper;
+import cz.jansimerda.homebrewdash.helpers.TokenHelper;
 import cz.jansimerda.homebrewdash.model.User;
 import cz.jansimerda.homebrewdash.model.UserSession;
 import cz.jansimerda.homebrewdash.repository.UserRepository;
@@ -12,11 +13,11 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
 
 @Service
 public class UserSessionService {
@@ -52,7 +53,7 @@ public class UserSessionService {
 
         UserSession session = new UserSession();
         session.setUser(user);
-        session.setToken(generateToken(UserSession.TOKEN_LENGTH));
+        session.setToken(TokenHelper.generateToken(UserSession.TOKEN_LENGTH));
         session.setExpiresAt(LocalDateTime.now().plusSeconds(UserSession.EXPIRATION_SECONDS));
         return sessionRepository.save(session);
     }
@@ -133,22 +134,5 @@ public class UserSessionService {
 
         session.setExpiresAt(LocalDateTime.now());
         sessionRepository.save(session);
-    }
-
-    /**
-     * Generate a secure random token of provided length
-     * from the following charset: abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._~+/
-     *
-     * @param length token length
-     * @return generated token
-     */
-    private String generateToken(int length) {
-        final String charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._~+/";
-        SecureRandom randomProvider = new SecureRandom();
-
-        return randomProvider.ints(length, 0, charset.length())
-                .mapToObj(charset::charAt)
-                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
-                .toString();
     }
 }

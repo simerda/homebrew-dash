@@ -41,6 +41,12 @@
         "file": "2023/11/03-01-changelog.json",
         "relativeToChangelogFile": true
       }
+    },
+    {
+      "include": {
+        "file": "2023/11/07-01-changelog.json",
+        "relativeToChangelogFile": true
+      }
     }
   ]
 }

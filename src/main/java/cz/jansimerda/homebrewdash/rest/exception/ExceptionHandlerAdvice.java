@@ -1,5 +1,6 @@
 package cz.jansimerda.homebrewdash.rest.exception;
 
+import cz.jansimerda.homebrewdash.exception.ConflictException;
 import cz.jansimerda.homebrewdash.exception.EntityNotFoundException;
 import cz.jansimerda.homebrewdash.exception.ExposedException;
 import cz.jansimerda.homebrewdash.exception.ExposedExceptionTypeEnum;
@@ -47,6 +48,12 @@ public class ExceptionHandlerAdvice {
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public @ResponseBody ErrorResponse handleEntityNotFoundException(EntityNotFoundException e) {
+        return new ErrorResponse(e.getType(), e.getMessage());
+    }
+
+    @ExceptionHandler(ConflictException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public @ResponseBody ErrorResponse handleConflictException(ConflictException e) {
         return new ErrorResponse(e.getType(), e.getMessage());
     }
 
