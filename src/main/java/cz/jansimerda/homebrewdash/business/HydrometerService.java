@@ -66,7 +66,7 @@ public class HydrometerService extends AbstractCrudService<Hydrometer, UUID> {
         entity.setToken(existing.getToken());
         fillAssignedBeer(entity);
 
-        return super.update(entity);
+        return hydrometerRepository.save(entity);
     }
 
     @Override
