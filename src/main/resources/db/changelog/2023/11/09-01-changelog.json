@@ -1,0 +1,21 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "1699492820005-1",
+        "author": "jansimerda",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "renameColumn": {
+              "columnDataType": "INT",
+              "newColumnName": "measurement_interval",
+              "oldColumnName": "interval",
+              "tableName": "measurements"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

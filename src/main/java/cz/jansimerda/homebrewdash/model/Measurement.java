@@ -32,7 +32,7 @@ public class Measurement implements DomainEntity<UUID>, CreationAware {
     @Column(nullable = false, precision = 11, scale = 8)
     private BigDecimal specificGravity;
 
-    @Column(nullable = false)
+    @Column(name = "measurement_interval", nullable = false)
     private int interval;
 
     @Column(nullable = false)
