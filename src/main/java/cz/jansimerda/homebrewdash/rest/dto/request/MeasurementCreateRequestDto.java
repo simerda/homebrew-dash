@@ -40,12 +40,13 @@ public class MeasurementCreateRequestDto {
     private BigDecimal gravity;
 
     @NotNull
-    private int interval;
+    private Integer interval;
 
+    @JsonProperty("RSSI")
     @Min(-100)
     @Max(100)
     @NotNull
-    private int RSSI;
+    private Integer RSSI;
 
     public String getToken() {
         return token;

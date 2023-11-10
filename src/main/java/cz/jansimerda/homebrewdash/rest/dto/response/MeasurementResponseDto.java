@@ -9,7 +9,7 @@ public class MeasurementResponseDto {
     private BigDecimal angle;
     private BigDecimal temperature;
     private BigDecimal battery;
-    private BeerGravityDto specificGravity;
+    private BeerGravityDto gravity;
     private int interval;
     private int rssi;
     private UUID hydrometerId;
@@ -50,12 +50,12 @@ public class MeasurementResponseDto {
         this.battery = battery;
     }
 
-    public BeerGravityDto getSpecificGravity() {
-        return specificGravity;
+    public BeerGravityDto getGravity() {
+        return gravity;
     }
 
-    public void setSpecificGravity(BeerGravityDto specificGravity) {
-        this.specificGravity = specificGravity;
+    public void setGravity(BeerGravityDto gravity) {
+        this.gravity = gravity;
     }
 
     public int getInterval() {

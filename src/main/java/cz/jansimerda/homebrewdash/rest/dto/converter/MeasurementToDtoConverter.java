@@ -23,7 +23,7 @@ public class MeasurementToDtoConverter implements Function<Measurement, Measurem
         dto.setAngle(measurement.getAngle());
         dto.setTemperature(measurement.getTemperature());
         dto.setBattery(measurement.getBattery());
-        dto.setSpecificGravity(gravityToDtoConverter.apply(measurement.getSpecificGravity()));
+        dto.setGravity(gravityToDtoConverter.apply(measurement.getSpecificGravity()));
         dto.setInterval(measurement.getInterval());
         dto.setRssi(measurement.getRssi());
         measurement.getHydrometer().map(Hydrometer::getId).ifPresent(dto::setHydrometerId);
