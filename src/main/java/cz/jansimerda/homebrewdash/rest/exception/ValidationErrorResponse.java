@@ -8,8 +8,8 @@ import java.util.List;
 public class ValidationErrorResponse extends ErrorResponse {
     private final List<Violation> errors = new ArrayList<>();
 
-    public ValidationErrorResponse(ExposedExceptionTypeEnum errorType, String message) {
-        super(errorType, message);
+    public ValidationErrorResponse(String message) {
+        super(ExposedExceptionTypeEnum.VALIDATION_ERROR, message);
     }
 
     public void addError(Violation error) {
