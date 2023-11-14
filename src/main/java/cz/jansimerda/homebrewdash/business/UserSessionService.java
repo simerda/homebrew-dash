@@ -1,7 +1,7 @@
 package cz.jansimerda.homebrewdash.business;
 
 import cz.jansimerda.homebrewdash.authentication.CustomUserDetails;
-import cz.jansimerda.homebrewdash.exception.UserUnauthenticatedException;
+import cz.jansimerda.homebrewdash.exception.exposed.UserUnauthenticatedException;
 import cz.jansimerda.homebrewdash.helpers.AuthenticationHelper;
 import cz.jansimerda.homebrewdash.helpers.TokenHelper;
 import cz.jansimerda.homebrewdash.model.User;

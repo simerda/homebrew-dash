@@ -1,4 +1,4 @@
-package cz.jansimerda.homebrewdash.exception;
+package cz.jansimerda.homebrewdash.exception.exposed;
 
 public abstract class ExposedException extends RuntimeException {
     public ExposedException(String message) {

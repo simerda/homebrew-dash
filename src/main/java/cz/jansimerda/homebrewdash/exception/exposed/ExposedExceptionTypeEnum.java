@@ -1,4 +1,4 @@
-package cz.jansimerda.homebrewdash.exception;
+package cz.jansimerda.homebrewdash.exception.exposed;
 
 public enum ExposedExceptionTypeEnum {
     ENTITY_NOT_FOUND("ENTITY_NOT_FOUND"),

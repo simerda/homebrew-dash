@@ -1,7 +1,7 @@
 package cz.jansimerda.homebrewdash.rest.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import cz.jansimerda.homebrewdash.exception.ExposedExceptionTypeEnum;
+import cz.jansimerda.homebrewdash.exception.exposed.ExposedExceptionTypeEnum;
 import cz.jansimerda.homebrewdash.model.Beer;
 import cz.jansimerda.homebrewdash.model.Hydrometer;
 import cz.jansimerda.homebrewdash.model.Measurement;

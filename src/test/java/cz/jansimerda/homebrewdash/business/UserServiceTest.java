@@ -1,6 +1,6 @@
 package cz.jansimerda.homebrewdash.business;
 
-import cz.jansimerda.homebrewdash.exception.ConditionsNotMetException;
+import cz.jansimerda.homebrewdash.exception.exposed.ConditionsNotMetException;
 import cz.jansimerda.homebrewdash.model.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

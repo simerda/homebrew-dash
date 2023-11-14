@@ -1,7 +1,7 @@
 package cz.jansimerda.homebrewdash.business;
 
-import cz.jansimerda.homebrewdash.exception.ConditionsNotMetException;
-import cz.jansimerda.homebrewdash.exception.EntityNotFoundException;
+import cz.jansimerda.homebrewdash.exception.exposed.ConditionsNotMetException;
+import cz.jansimerda.homebrewdash.exception.exposed.EntityNotFoundException;
 import cz.jansimerda.homebrewdash.model.Yeast;
 import cz.jansimerda.homebrewdash.model.enums.YeastKindEnum;
 import cz.jansimerda.homebrewdash.model.enums.YeastTypeEnum;

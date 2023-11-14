@@ -1,7 +1,7 @@
 package cz.jansimerda.homebrewdash.business;
 
-import cz.jansimerda.homebrewdash.exception.ConditionsNotMetException;
-import cz.jansimerda.homebrewdash.exception.EntityNotFoundException;
+import cz.jansimerda.homebrewdash.exception.exposed.ConditionsNotMetException;
+import cz.jansimerda.homebrewdash.exception.exposed.EntityNotFoundException;
 import cz.jansimerda.homebrewdash.model.Beer;
 import cz.jansimerda.homebrewdash.model.enums.BrewStateEnum;
 import cz.jansimerda.homebrewdash.repository.BeerRepository;

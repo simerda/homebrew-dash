@@ -1,7 +1,7 @@
 package cz.jansimerda.homebrewdash.rest.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import cz.jansimerda.homebrewdash.exception.ExposedExceptionTypeEnum;
+import cz.jansimerda.homebrewdash.exception.exposed.ExposedExceptionTypeEnum;
 import cz.jansimerda.homebrewdash.model.User;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;

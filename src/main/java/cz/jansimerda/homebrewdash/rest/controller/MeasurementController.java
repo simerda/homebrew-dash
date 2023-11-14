@@ -1,7 +1,7 @@
 package cz.jansimerda.homebrewdash.rest.controller;
 
 import cz.jansimerda.homebrewdash.business.MeasurementService;
-import cz.jansimerda.homebrewdash.exception.EntityNotFoundException;
+import cz.jansimerda.homebrewdash.exception.exposed.EntityNotFoundException;
 import cz.jansimerda.homebrewdash.model.Measurement;
 import cz.jansimerda.homebrewdash.rest.dto.converter.DtoToMeasurementConverter;
 import cz.jansimerda.homebrewdash.rest.dto.converter.MeasurementToDtoConverter;

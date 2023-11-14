@@ -1,6 +1,6 @@
 package cz.jansimerda.homebrewdash.authentication;
 
-import cz.jansimerda.homebrewdash.exception.UserUnauthenticatedException;
+import cz.jansimerda.homebrewdash.exception.exposed.UserUnauthenticatedException;
 import cz.jansimerda.homebrewdash.model.User;
 import cz.jansimerda.homebrewdash.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;

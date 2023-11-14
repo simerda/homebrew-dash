@@ -1,7 +1,7 @@
 package cz.jansimerda.homebrewdash.business;
 
-import cz.jansimerda.homebrewdash.exception.ConflictException;
-import cz.jansimerda.homebrewdash.exception.EntityNotFoundException;
+import cz.jansimerda.homebrewdash.exception.exposed.ConflictException;
+import cz.jansimerda.homebrewdash.exception.exposed.EntityNotFoundException;
 import cz.jansimerda.homebrewdash.model.Beer;
 import cz.jansimerda.homebrewdash.model.Hydrometer;
 import cz.jansimerda.homebrewdash.model.Measurement;

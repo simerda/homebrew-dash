@@ -1,9 +1,9 @@
 package cz.jansimerda.homebrewdash.rest.exception;
 
-import cz.jansimerda.homebrewdash.exception.ConflictException;
-import cz.jansimerda.homebrewdash.exception.EntityNotFoundException;
-import cz.jansimerda.homebrewdash.exception.ExposedException;
-import cz.jansimerda.homebrewdash.exception.ExposedExceptionTypeEnum;
+import cz.jansimerda.homebrewdash.exception.exposed.ConflictException;
+import cz.jansimerda.homebrewdash.exception.exposed.EntityNotFoundException;
+import cz.jansimerda.homebrewdash.exception.exposed.ExposedException;
+import cz.jansimerda.homebrewdash.exception.exposed.ExposedExceptionTypeEnum;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;

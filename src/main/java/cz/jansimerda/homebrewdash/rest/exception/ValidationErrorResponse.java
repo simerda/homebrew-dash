@@ -1,6 +1,6 @@
 package cz.jansimerda.homebrewdash.rest.exception;
 
-import cz.jansimerda.homebrewdash.exception.ExposedExceptionTypeEnum;
+import cz.jansimerda.homebrewdash.exception.exposed.ExposedExceptionTypeEnum;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package cz.jansimerda.homebrewdash.exception;
+package cz.jansimerda.homebrewdash.exception.exposed;
 
 public class EntityNotFoundException extends ExposedException {
     public EntityNotFoundException() {
