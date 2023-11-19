@@ -11,6 +11,7 @@ services:
     env_file: .env
     environment:
       - DB_HOST=homebrew_dash_postgres
+      - TZ=Europe/Prague
     networks:
       - common_network
 
@@ -28,6 +29,8 @@ services:
       - POSTGRES_USER=${DB_USERNAME}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=homebrew_dash
+      - TZ=Europe/Prague
+      - PGTZ=Europe/Prague
     networks:
       - common_network
 

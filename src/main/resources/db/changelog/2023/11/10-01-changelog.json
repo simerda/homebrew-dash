@@ -1,0 +1,185 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "1699632768477-1",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false,
+                      "primaryKey": true,
+                      "primaryKeyName": "pk_thermostats"
+                    },
+                    "name": "id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "name",
+                    "type": "VARCHAR(100)"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "device_name",
+                    "type": "VARCHAR(20)"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "email",
+                    "type": "VARCHAR(100)"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "password",
+                    "type": "VARCHAR(150)"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "heating",
+                    "type": "BOOLEAN"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "active",
+                    "type": "BOOLEAN"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "powered_on",
+                    "type": "BOOLEAN"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "state",
+                    "type": "TINYINT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "hydrometer_id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "last_success_at",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "last_fail_at",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "created_by_user_id",
+                    "type": "UUID"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "updated_at",
+                    "type": "DATETIME"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "created_at",
+                    "type": "DATETIME"
+                  }
+                }
+              ],
+              "tableName": "thermostats"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1699632768477-2",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "created_by_user_id",
+              "baseTableName": "thermostats",
+              "constraintName": "FK_THERMOSTATS_ON_CREATED_BY_USER",
+              "referencedColumnNames": "id",
+              "referencedTableName": "users",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1699632768477-3",
+        "author": "jansimerda (generated)",
+        "objectQuotingStrategy": "QUOTE_ONLY_RESERVED_WORDS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "hydrometer_id",
+              "baseTableName": "thermostats",
+              "constraintName": "FK_THERMOSTATS_ON_HYDROMETER",
+              "referencedColumnNames": "id",
+              "referencedTableName": "hydrometers",
+              "onUpdate": "CASCADE",
+              "onDelete": "SET NULL"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

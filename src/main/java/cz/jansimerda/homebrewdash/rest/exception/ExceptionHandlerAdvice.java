@@ -1,9 +1,6 @@
 package cz.jansimerda.homebrewdash.rest.exception;
 
-import cz.jansimerda.homebrewdash.exception.exposed.ConflictException;
-import cz.jansimerda.homebrewdash.exception.exposed.EntityNotFoundException;
-import cz.jansimerda.homebrewdash.exception.exposed.ExposedException;
-import cz.jansimerda.homebrewdash.exception.exposed.ExposedExceptionTypeEnum;
+import cz.jansimerda.homebrewdash.exception.exposed.*;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
@@ -61,6 +58,12 @@ public class ExceptionHandlerAdvice {
     @ExceptionHandler(ConflictException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     public @ResponseBody ErrorResponse handleConflictException(ConflictException e) {
+        return new ErrorResponse(e.getType(), e.getMessage());
+    }
+
+    @ExceptionHandler(ServiceUnavailableException.class)
+    @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
+    public @ResponseBody ErrorResponse handleServiceUnavailableException(ServiceUnavailableException e) {
         return new ErrorResponse(e.getType(), e.getMessage());
     }
 
