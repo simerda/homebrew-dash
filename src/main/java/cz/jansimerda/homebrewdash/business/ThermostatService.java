@@ -45,7 +45,7 @@ public class ThermostatService extends AbstractCrudService<Thermostat, UUID> {
 
     /**
      * maximum granularity of the thermostat
-     * 2 minutes
+     * 5 minutes
      */
     private final int SEC_SWITCHING_DELAY = 300;
 
@@ -168,7 +168,6 @@ public class ThermostatService extends AbstractCrudService<Thermostat, UUID> {
 
     @Scheduled(fixedRate = 2 * 60 * 1000)
     public void scheduleThermostats() {
-        System.out.println("SCHEDULE STARTS");
         List<Thermostat> thermostats = thermostatRepository.findToBeSwitched(
                 LocalDateTime.now().minusSeconds(SEC_SWITCHING_DELAY),
                 LocalDateTime.now().minusSeconds(SEC_FAILURE_DELAY),
