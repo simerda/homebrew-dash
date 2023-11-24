@@ -20,7 +20,14 @@ jobs:
         run: touch .env
 
       - name: Build and run tests
-        run: docker build .
+        run: docker build -t build_image .
+
+      - name: Copy code coverage report
+        run: docker create --name build_container build_image && mkdir build && docker cp build_container:/src/homebrew-dash/build/reports/ ./build/reports/
+
+      - name: Run code coverage
+        uses: codecov/codecov-action@v3
 
         env:
           DEFAULT_BRANCH: main
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
