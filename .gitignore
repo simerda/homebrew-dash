@@ -38,3 +38,6 @@ out/
 
 ### dotenv
 .env
+
+# application loggign
+logs/
