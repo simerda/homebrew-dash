@@ -1028,7 +1028,7 @@ class ThermostatControllerTest extends AbstractControllerTest {
     }
 
     private String getUri() {
-        return "/api/v0/thermostats";
+        return "/api/v1/thermostats";
     }
 
     private String getUri(UUID id) {

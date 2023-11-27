@@ -11,7 +11,7 @@ import java.util.UUID;
 import java.util.function.Function;
 
 @RestController
-@RequestMapping(value = "/api/v0/hydrometers")
+@RequestMapping(value = "/api/v1/hydrometers")
 public class HydrometerController extends AbstractCrudController<Hydrometer, HydrometerRequestDto, HydrometerResponseDto, UUID> {
     public HydrometerController(
             AbstractCrudService<Hydrometer, UUID> service,

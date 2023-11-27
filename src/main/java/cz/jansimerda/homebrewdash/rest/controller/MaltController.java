@@ -11,7 +11,7 @@ import java.util.UUID;
 import java.util.function.Function;
 
 @RestController
-@RequestMapping(value = "/api/v0/malts")
+@RequestMapping(value = "/api/v1/malts")
 public class MaltController extends AbstractCrudController<Malt, MaltRequestDto, MaltResponseDto, UUID> {
     public MaltController(
             AbstractCrudService<Malt, UUID> service,

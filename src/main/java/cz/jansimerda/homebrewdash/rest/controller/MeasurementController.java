@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "/api/v0/measurements")
+@RequestMapping(value = "/api/v1/measurements")
 public class MeasurementController {
 
     private final MeasurementToDtoConverter entityToDtoConverter;

@@ -725,7 +725,7 @@ class MaltChangeControllerTest extends AbstractControllerTest {
     }
 
     private String getUri() {
-        return "/api/v0/malts/changes";
+        return "/api/v1/malts/changes";
     }
 
     private String getUri(UUID id) {

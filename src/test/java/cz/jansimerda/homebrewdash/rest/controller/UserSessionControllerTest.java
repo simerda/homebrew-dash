@@ -333,7 +333,7 @@ class UserSessionControllerTest extends AbstractControllerTest {
     }
 
     private String getUri() {
-        return "/api/v0/user-sessions";
+        return "/api/v1/user-sessions";
     }
 
     private String getUri(UUID id) {

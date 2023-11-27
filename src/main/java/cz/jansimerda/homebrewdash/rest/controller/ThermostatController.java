@@ -11,7 +11,7 @@ import java.util.UUID;
 import java.util.function.Function;
 
 @RestController
-@RequestMapping(value = "/api/v0/thermostats")
+@RequestMapping(value = "/api/v1/thermostats")
 public class ThermostatController extends AbstractCrudController<Thermostat, ThermostatRequestDto, ThermostatResponseDto, UUID> {
     public ThermostatController(
             AbstractCrudService<Thermostat, UUID> service,

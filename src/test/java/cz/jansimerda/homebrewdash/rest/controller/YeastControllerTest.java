@@ -471,7 +471,7 @@ class YeastControllerTest extends AbstractControllerTest {
     }
 
     private String getUri() {
-        return "/api/v0/yeasts";
+        return "/api/v1/yeasts";
     }
 
     private String getUri(UUID id) {

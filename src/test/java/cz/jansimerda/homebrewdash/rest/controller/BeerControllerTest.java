@@ -1493,7 +1493,7 @@ class BeerControllerTest extends AbstractControllerTest {
     }
 
     private String getUri() {
-        return "/api/v0/beers";
+        return "/api/v1/beers";
     }
 
     private String getUri(UUID id) {

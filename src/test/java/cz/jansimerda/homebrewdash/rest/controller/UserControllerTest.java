@@ -463,7 +463,7 @@ class UserControllerTest extends AbstractControllerTest {
     }
 
     private String getUri() {
-        return "/api/v0/users";
+        return "/api/v1/users";
     }
 
     private String getUri(UUID id) {

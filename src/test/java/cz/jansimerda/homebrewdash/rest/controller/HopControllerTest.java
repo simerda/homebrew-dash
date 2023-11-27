@@ -473,7 +473,7 @@ class HopControllerTest extends AbstractControllerTest {
     }
 
     private String getUri() {
-        return "/api/v0/hops";
+        return "/api/v1/hops";
     }
 
     private String getUri(UUID id) {

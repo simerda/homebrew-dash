@@ -14,7 +14,7 @@ import java.util.UUID;
 import java.util.function.Function;
 
 @RestController
-@RequestMapping(value = "/api/v0/users")
+@RequestMapping(value = "/api/v1/users")
 public class UserController extends AbstractCrudController<User, UserRequestDto, UserResponseDto, UUID> {
 
     private final UserService service;

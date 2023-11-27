@@ -11,7 +11,7 @@ import java.util.UUID;
 import java.util.function.Function;
 
 @RestController
-@RequestMapping(value = "/api/v0/beers")
+@RequestMapping(value = "/api/v1/beers")
 public class BeerController extends AbstractCrudController<Beer, BeerRequestDto, BeerResponseDto, UUID> {
     public BeerController(
             AbstractCrudService<Beer, UUID> service,

@@ -808,7 +808,7 @@ public class MeasurementControllerTest extends AbstractControllerTest {
     }
 
     private String getUri() {
-        return "/api/v0/measurements";
+        return "/api/v1/measurements";
     }
 
     private String getUri(UUID id) {

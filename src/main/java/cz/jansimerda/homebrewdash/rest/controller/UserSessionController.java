@@ -18,7 +18,7 @@ import java.util.UUID;
 import java.util.stream.StreamSupport;
 
 @RestController
-@RequestMapping("/api/v0/user-sessions")
+@RequestMapping("/api/v1/user-sessions")
 public class UserSessionController {
 
     private final UserSessionService userSessionService;

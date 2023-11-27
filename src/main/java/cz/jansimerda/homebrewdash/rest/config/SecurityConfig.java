@@ -36,9 +36,9 @@ public class SecurityConfig {
             a.requestMatchers("/api/docs-ui/**").permitAll();
             a.requestMatchers("/api/swagger-ui/**").permitAll();
             a.requestMatchers("/api/docs/**").permitAll();
-            a.requestMatchers(HttpMethod.POST, "/api/v0/user-sessions").permitAll();
-            a.requestMatchers(HttpMethod.POST, "/api/v0/users").permitAll();
-            a.requestMatchers(HttpMethod.POST, "/api/v0/measurements").permitAll();
+            a.requestMatchers(HttpMethod.POST, "/api/v1/user-sessions").permitAll();
+            a.requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll();
+            a.requestMatchers(HttpMethod.POST, "/api/v1/measurements").permitAll();
             a.anyRequest().fullyAuthenticated();
         });
         http.authenticationManager(authManager(http));

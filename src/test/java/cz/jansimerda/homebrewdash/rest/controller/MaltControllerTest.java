@@ -434,7 +434,7 @@ class MaltControllerTest extends AbstractControllerTest {
     }
 
     private String getUri() {
-        return "/api/v0/malts";
+        return "/api/v1/malts";
     }
 
     private String getUri(UUID id) {

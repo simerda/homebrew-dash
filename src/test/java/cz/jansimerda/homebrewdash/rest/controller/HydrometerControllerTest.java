@@ -663,7 +663,7 @@ class HydrometerControllerTest extends AbstractControllerTest {
     }
 
     private String getUri() {
-        return "/api/v0/hydrometers";
+        return "/api/v1/hydrometers";
     }
 
     private String getUri(UUID id) {

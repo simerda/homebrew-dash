@@ -11,7 +11,7 @@ import java.util.UUID;
 import java.util.function.Function;
 
 @RestController
-@RequestMapping(value = "/api/v0/yeasts")
+@RequestMapping(value = "/api/v1/yeasts")
 public class YeastController extends AbstractCrudController<Yeast, YeastRequestDto, YeastResponseDto, UUID> {
     public YeastController(
             AbstractCrudService<Yeast, UUID> service,

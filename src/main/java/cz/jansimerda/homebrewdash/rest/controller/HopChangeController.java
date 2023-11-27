@@ -11,7 +11,7 @@ import java.util.UUID;
 import java.util.function.Function;
 
 @RestController
-@RequestMapping(value = "/api/v0/hops/changes")
+@RequestMapping(value = "/api/v1/hops/changes")
 public class HopChangeController extends AbstractCrudController<HopChange, HopChangeRequestDto, HopChangeResponseDto, UUID> {
     public HopChangeController(
             AbstractCrudService<HopChange, UUID> service,
