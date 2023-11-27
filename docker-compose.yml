@@ -5,7 +5,7 @@ services:
     build: .
     container_name: homebrew_dash_gradle
     ports:
-      - "8080:8080"
+      - "${PORT}:${PORT}"
     depends_on:
       - database
     env_file: .env
@@ -28,7 +28,7 @@ services:
     environment:
       - POSTGRES_USER=${DB_USERNAME}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=homebrew_dash
+      - POSTGRES_DB=${DB_DATABASE}
       - TZ=Europe/Prague
       - PGTZ=Europe/Prague
     networks:
