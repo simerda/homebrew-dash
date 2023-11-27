@@ -1,0 +1,12 @@
+setup:
+  addons:
+    - plan: heroku-postgresql:mini
+      as: DATABASE
+build:
+  docker:
+    web: Dockerfile.deploy
+  config:
+    TZ: Europe/Prague
+    DATABASE_URL: $DATABASE_URL
+run:
+  web: ./heroku-release.sh && java -jar build/libs/*.jar
