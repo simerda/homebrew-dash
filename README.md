@@ -171,6 +171,7 @@ A non-exhaustive list of software technologies / features used is as follows:
 - Spring Boot 3
 - Scheduling
 - JUnit
+- Mockito
 - Hibernate
 - Gradle
 - Python
