@@ -158,9 +158,9 @@ You can create a new used by using the unprotected `POST` method on the `/users`
 
 ### Documentation
 
-Detailed information about available endpoints and their usage can be found in the browsable *Swagger UI* [API Documentation](https://homebrew-dash-3919a7b12f63.herokuapp.com/api/docs-ui).
+Detailed information about available endpoints and their usage can be found in the browsable *Swagger UI* [API Documentation](https://simerda.dev/api/docs-ui).
 
-Or the *OpenAPI* specification can be downloaded at [https://homebrew-dash-3919a7b12f63.herokuapp.com/api/docs](https://homebrew-dash-3919a7b12f63.herokuapp.com/api/docs)
+Or the *OpenAPI* specification can be downloaded at [https://simerda.dev/api/docs](https://simerda.dev/api/docs)
 
 ---
 
