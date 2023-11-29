@@ -30,8 +30,8 @@ as well as their brewing activities and integration of useful IoT devices.
     - [Installation](#installation)
 - [Usage](#usage)
     - [Authentication](#authentication)
-    - [Endpoints](#endpoints)
-- [Contributing](#contributing)
+    - [Documentation](#documentation)
+- [Tech stack](#tech-stack)
 - [License](#license)
 
 ---
